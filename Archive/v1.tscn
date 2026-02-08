@@ -1,0 +1,400 @@
+[gd_scene format=3 uid="uid://dy8p7qb2nawtn"]
+
+[node name="Control" type="Control" unique_id=2050712242]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InitialRoot" type="HBoxContainer" parent="." unique_id=2132182259]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 32.0
+scale = Vector2(3, 3)
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot" unique_id=149095045]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/trigger" unique_id=1178738268]
+layout_mode = 2
+text = "Starter"
+
+[node name="line" type="HBoxContainer" parent="InitialRoot" unique_id=1348288356]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/line" unique_id=1917703480]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/line" unique_id=1295201141]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/line" unique_id=1912387257]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot" unique_id=1342287952]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/ending" unique_id=66498172]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot" unique_id=621187872]
+layout_mode = 2
+
+[node name="ChildRoot" type="HBoxContainer" parent="InitialRoot/NewSeed" unique_id=1572287447]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot" unique_id=2131967286]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot" unique_id=387126081]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/line" unique_id=2071864593]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot/line" unique_id=1250700636]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot/line" unique_id=1543753235]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot" unique_id=1129388257]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/ending" unique_id=1569801227]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot" unique_id=49854643]
+layout_mode = 2
+
+[node name="InitialRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed" unique_id=1060860772]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot" unique_id=1036710697]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot" unique_id=1323296970]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/line" unique_id=1136851802]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/line" unique_id=2131229560]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/line" unique_id=949870907]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot" unique_id=1147909751]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/ending" unique_id=1174157173]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot" unique_id=1292762352]
+layout_mode = 2
+
+[node name="InitialRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed" unique_id=1624151177]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot" unique_id=370250002]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot" unique_id=525174296]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot/line" unique_id=492931557]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot/line" unique_id=898190021]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot/line" unique_id=240257202]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot" unique_id=1084690741]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot/ending" unique_id=1129095068]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot" unique_id=1649113972]
+layout_mode = 2
+
+[node name="InitialRoot2" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed" unique_id=1004359425]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2" unique_id=290359826]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2" unique_id=1712814013]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2/line" unique_id=658365434]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2/line" unique_id=1097311694]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2/line" unique_id=2142299291]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2" unique_id=99490441]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2/ending" unique_id=1667914584]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot/NewSeed/InitialRoot/NewSeed/InitialRoot2" unique_id=374101223]
+layout_mode = 2
+
+[node name="ChildRoot2" type="HBoxContainer" parent="InitialRoot/NewSeed" unique_id=233205109]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2" unique_id=1847107130]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2" unique_id=1292193738]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/line" unique_id=1229585755]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/line" unique_id=1507286920]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/line" unique_id=672631155]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2" unique_id=1400591458]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/ending" unique_id=1460652562]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2" unique_id=809589616]
+layout_mode = 2
+
+[node name="GrandChildRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed" unique_id=1031521573]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot" unique_id=1483983721]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot" unique_id=856785990]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/line" unique_id=1289354769]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot" unique_id=1147520601]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/ending" unique_id=1653052039]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot" unique_id=1685630319]
+layout_mode = 2
+
+[node name="NGRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed" unique_id=2041264956]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=1775402273]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=230524348]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/line" unique_id=2084951879]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/line" unique_id=437397124]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=7327988]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/ending" unique_id=1479265831]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=922124525]
+layout_mode = 2
+
+[node name="GrandChildRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed" unique_id=1341394810]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot" unique_id=1948833385]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot" unique_id=1887282430]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/line" unique_id=820181261]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot" unique_id=457761426]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/ending" unique_id=1172014843]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot" unique_id=754811035]
+layout_mode = 2
+
+[node name="NGRoot" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed" unique_id=1185860776]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=43275800]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=66156329]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot/line" unique_id=994017659]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot/line" unique_id=1229573528]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=1124345124]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot/ending" unique_id=459363714]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot" unique_id=358274910]
+layout_mode = 2
+
+[node name="NGRoot2" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed" unique_id=699301013]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=1767488946]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=83587198]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1070113899]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1438135373]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1387681539]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=200536779]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2/ending" unique_id=1948558876]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=1569114260]
+layout_mode = 2
+
+[node name="NGRoot2" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed" unique_id=361202485]
+layout_mode = 2
+
+[node name="trigger" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=486832632]
+layout_mode = 2
+alignment = 1
+
+[node name="line" type="HBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=677897816]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1303773602]
+layout_mode = 2
+text = "node"
+
+[node name="Button2" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1038930547]
+layout_mode = 2
+text = "node"
+
+[node name="Button3" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2/line" unique_id=1552995568]
+layout_mode = 2
+text = "node"
+
+[node name="ending" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=642547396]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2/ending" unique_id=1115655546]
+layout_mode = 2
+text = "ending"
+
+[node name="NewSeed" type="VBoxContainer" parent="InitialRoot/NewSeed/ChildRoot2/NewSeed/GrandChildRoot/NewSeed/NGRoot2" unique_id=760562923]
+layout_mode = 2

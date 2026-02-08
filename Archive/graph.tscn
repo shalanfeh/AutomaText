@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dpfbr15wgpfuc"]
+
+[ext_resource type="Texture2D" uid="uid://0g2oueldjjl4" path="res://icon.svg" id="1_41hjn"]
+
+[node name="Control" type="Control" unique_id=890617505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=160538293]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1193.0
+offset_bottom = 662.0
+
+[node name="GraphNode" type="GraphNode" parent="GraphEdit" unique_id=150878941]
+layout_mode = 0
+offset_right = 314.0
+offset_bottom = 150.0
+mouse_filter = 1
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="ColorRect" type="ColorRect" parent="GraphEdit/GraphNode" unique_id=856755246]
+layout_mode = 2
+
+[node name="GraphNode2" type="GraphNode" parent="GraphEdit" unique_id=171518826]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 238.0
+offset_right = 749.0
+offset_bottom = 388.0
+mouse_filter = 1
+position_offset = Vector2(435, 238)
+title = "2"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = ExtResource("1_41hjn")
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+
+[node name="ColorRect" type="ColorRect" parent="GraphEdit/GraphNode2" unique_id=2011806132]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2

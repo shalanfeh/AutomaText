@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://dsq0kd088stpt"]
+
+[node name="Node1 - some code" type="VBoxContainer" unique_id=1689958984]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="only branch" type="HBoxContainer" parent="." unique_id=1911262480]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch" unique_id=1061899413]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 1, 1, 1)
+
+[node name="Node2 - if statement" type="VBoxContainer" parent="only branch" unique_id=851979398]
+layout_mode = 2
+
+[node name="condition1" type="HBoxContainer" parent="only branch/Node2 - if statement" unique_id=98042784]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1" unique_id=1339106944]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1" unique_id=952498856]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code" unique_id=1015659726]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch" unique_id=805703504]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 1, 0.3529412, 1)
+
+[node name="Node2 - if statement" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch" unique_id=264580650]
+layout_mode = 2
+
+[node name="condition1" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement" unique_id=670641772]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=1212380009]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=1286144751]
+layout_mode = 2
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code" unique_id=1748081441]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code" unique_id=1204865371]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch" unique_id=2022944651]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 1, 0.3529412, 1)
+
+[node name="Node2 - if statement" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch" unique_id=1453947331]
+layout_mode = 2
+
+[node name="condition1" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement" unique_id=2140515274]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=1593638309]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=1808819267]
+layout_mode = 2
+
+[node name="condition2" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement" unique_id=288841656]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=1665262757]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node4 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=1366109180]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code" unique_id=1821839843]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1926040262]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node5" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition1/node3 - some code/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=240948001]
+layout_mode = 2
+
+[node name="condition2" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement" unique_id=1863463189]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=623739131]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node4 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=1702723816]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code" unique_id=1322579625]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1158022755]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node5" type="VBoxContainer" parent="only branch/Node2 - if statement/condition1/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1617299885]
+layout_mode = 2
+
+[node name="condition2" type="HBoxContainer" parent="only branch/Node2 - if statement" unique_id=2115706618]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2" unique_id=642769916]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node4 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2" unique_id=1131765712]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code" unique_id=228565502]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=405239471]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node5" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1479049769]
+layout_mode = 2
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5" unique_id=506362147]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code" unique_id=370859014]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch" unique_id=1394571807]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(1, 1, 0.3529412, 1)
+
+[node name="Node2 - if statement" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch" unique_id=1033911070]
+layout_mode = 2
+
+[node name="condition1" type="HBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement" unique_id=612630464]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=77835278]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node3 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition1" unique_id=1991267478]
+layout_mode = 2
+
+[node name="condition2" type="HBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement" unique_id=554098594]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=1453229420]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node4 - some code" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition2" unique_id=2057603956]
+layout_mode = 2
+
+[node name="only branch" type="HBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code" unique_id=312038904]
+layout_mode = 2
+
+[node name="code" type="ColorRect" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1363743521]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="node5" type="VBoxContainer" parent="only branch/Node2 - if statement/condition2/node4 - some code/only branch/node5/node3 - some code/only branch/Node2 - if statement/condition2/node4 - some code/only branch" unique_id=1307673078]
+layout_mode = 2

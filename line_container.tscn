@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dno4iwdrkcg8r"]
+
+[ext_resource type="PackedScene" uid="uid://dfosuh8726bvi" path="res://NodeBuilderAPI/Scenes/CodeNode.tscn" id="1_fxun6"]
+[ext_resource type="Script" uid="uid://banqt0cevwdhk" path="res://LineContainer.gd" id="1_wxq6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxq6o"]
+bg_color = Color(0.122980185, 0.00020773232, 0.2901411, 0.09019608)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="LineContainer" type="PanelContainer" unique_id=14589049]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wxq6o")
+script = ExtResource("1_wxq6o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1151743097]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CodeNode" parent="HBoxContainer" unique_id=1634294937 instance=ExtResource("1_fxun6")]
+layout_mode = 2
