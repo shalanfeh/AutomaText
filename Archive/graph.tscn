@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpfbr15wgpfuc"]
 
-[ext_resource type="Texture2D" uid="uid://0g2oueldjjl4" path="res://icon.svg" id="1_41hjn"]
+[ext_resource type="Texture2D" uid="uid://0g2oueldjjl4" path="res://Archive/icon.svg" id="1_41hjn"]
 
 [node name="Control" type="Control" unique_id=890617505]
 layout_mode = 3

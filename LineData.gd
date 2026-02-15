@@ -1,9 +1,9 @@
 class_name LineData
 extends Resource
 
-var NodeSaveList : Array[ModifiedCodeNode] = []
+var NodeSaveList : Array[SavedCodeNode] = []
 
-func Insert(NewNode: ModifiedCodeNode, Index: int = -1) -> void:
+func Insert(NewNode: SavedCodeNode, Index: int = -1) -> void:
 	#Add at back of line
 	if Index <= -1:
 		NodeSaveList.append(NewNode)

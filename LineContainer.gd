@@ -7,23 +7,24 @@ class_name LineContainer
 var DataHolder: LineData
 
 #inserts data into the data holder and UI
-func Insert(NewNode: ModifiedCodeNode, Index: int = -1) -> void:
-	#make sure the modifiedCodeNode actually points to a real generic node
+#Used when creating new nodes
+func Insert(NewNode: SavedCodeNode, Index: int = -1) -> void:
+	#make sure the SavedCodeNode actually points to a real generic node
 	var CodeName = NewNode.Name
 	if not GenericNodeList.GenericList.has(CodeName):
 		push_warning("Unable to add ModifiedCodeNode to list with node name: ", CodeName)
 		return
 	
-	#Add to LineData
-	DataHolder.Insert(NewNode, Index)
-	
 	#Instantiate the real thing and add it to line UI
 	var GenericResource: GenericCodeNode = GenericNodeList.GenericList.get(CodeName)
-	var InstantiatedNode: PanelContainer = GenericResource.Create(NewNode)
+	var InstantiatedNode: NodeUI = GenericResource.Create(NewNode)
 	InsertChild(InstantiatedNode, Index)
+	
+	#Add to LineData - through instantiatedNode for null saveCodeNode cases
+	DataHolder.Insert(InstantiatedNode.SaveData, Index)
 
-#inserts a node UI element to the line UI element
-func InsertChild(Child: PanelContainer, index: int = -1) -> void:
+#inserts a NodeUI to the lineUI element
+func InsertChild(Child: NodeUI, index: int = -1) -> void:
 	# Make sure the child is kinda homeless
 	if Child.get_parent():
 		Child.get_parent().remove_child(Child)
@@ -36,7 +37,7 @@ func InsertChild(Child: PanelContainer, index: int = -1) -> void:
 		move_child(Child, index)
 	
 
-#loads data into the UI
+#converts LineData into a full lineUI. Assumes LineContainer is empty!
 func DataToUi() -> void:
-	
-	pass
+	for SavedNode: SavedCodeNode in DataHolder.NodeSaveList:
+		InsertChild(GenericNodeList.GenericList[SavedNode.Name].Create(SavedNode))

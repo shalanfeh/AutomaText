@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dfosuh8726bvi"]
 
+[ext_resource type="Script" uid="uid://bw8ywpqbyikyf" path="res://NodeBuilderAPI/BaseResources/NodeUI.gd" id="1_stgt2"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lwwx"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 4
@@ -9,11 +11,13 @@ border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 shadow_size = 5
 
-[node name="CodeNode" type="PanelContainer" unique_id=1634294937]
+[node name="CodeNode" type="PanelContainer" unique_id=1634294937 node_paths=PackedStringArray("NodeItemContainer")]
 custom_minimum_size = Vector2(50, 10)
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1lwwx")
+script = ExtResource("1_stgt2")
+NodeItemContainer = NodePath("Container")
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=1816612870]
 layout_mode = 2
