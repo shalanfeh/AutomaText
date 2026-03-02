@@ -1,4 +1,4 @@
-extends Node2D
+extends PanelContainer
 class_name NodeUI
 
 #container that holds node items (labels, variable inputs, etc)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ck2ly36utex3"]
+
+[ext_resource type="Script" uid="uid://c5d71imvrgk46" path="res://NodeManager/Leaf/LeafUI.gd" id="1_4k564"]
+[ext_resource type="PackedScene" uid="uid://dno4iwdrkcg8r" path="res://NodeManager/Line/line_container.tscn" id="1_cqyio"]
+
+[node name="LeafContainer" type="PanelContainer" unique_id=2100856745 node_paths=PackedStringArray("HBox", "LineUI")]
+offset_right = 110.0
+offset_bottom = 70.0
+script = ExtResource("1_4k564")
+HBox = NodePath("MarginContainer/HBoxContainer")
+LineUI = NodePath("MarginContainer/HBoxContainer/LineContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1160116355]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=246738248]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="LineContainer" parent="MarginContainer/HBoxContainer" unique_id=14589049 instance=ExtResource("1_cqyio")]
+layout_mode = 2

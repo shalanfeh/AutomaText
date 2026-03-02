@@ -13,8 +13,7 @@ shadow_size = 5
 
 [node name="CodeNode" type="PanelContainer" unique_id=1634294937 node_paths=PackedStringArray("NodeItemContainer")]
 custom_minimum_size = Vector2(50, 10)
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = -1
 theme_override_styles/panel = SubResource("StyleBoxFlat_1lwwx")
 script = ExtResource("1_stgt2")
 NodeItemContainer = NodePath("Container")

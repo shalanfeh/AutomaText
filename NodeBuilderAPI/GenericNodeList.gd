@@ -7,7 +7,7 @@ var GenericList: Dictionary[String, GenericCodeNode]
 
 #inserts generic nodes into the list. Called from generic _init
 func Insert(Name: String, Generic: GenericCodeNode):
-	if GenericList.find_key(Name):
+	if GenericList.has(Name):
 		push_warning("Found duplicate of key: " + Name + " in GenericNodeList.
 		Removed 1 for the other.")
 	GenericList[Name] = Generic
@@ -21,11 +21,17 @@ func LoadAllGenerics(path: String) -> void:
 		var FileName = Directory.get_next()
 		while FileName != "":
 			if Directory.current_is_dir():
+				FileName = Directory.get_next()
 				continue
-			ResourceLoader.load(path + FileName)
+			#uid files
+			if FileName.ends_with(".gd"):
+				load(path + FileName).new()
+			
 			FileName = Directory.get_next()
 	else:
 		push_error("Invalid file path for GenericNodeDirectoryPath: " + path)
 
 func _ready() -> void:
 	LoadAllGenerics(GenericNodeDirectoryPath)
+	print("loaded all generics")
+	print(GenericList)

@@ -7,9 +7,7 @@ class_name ExecutionPointer
 var Sequence: String
 
 #leaf, position
-
 #null for now, leaf class not created
-var leaf = null
-
+var leaf: LeafData
 #index within leaf. 0 = line.0. end of line + 1 = ending of leaf
 var index: int = 0

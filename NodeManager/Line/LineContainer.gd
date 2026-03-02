@@ -41,3 +41,5 @@ func InsertChild(Child: NodeUI, index: int = -1) -> void:
 func DataToUi() -> void:
 	for SavedNode: SavedCodeNode in DataHolder.NodeSaveList:
 		InsertChild(GenericNodeList.GenericList[SavedNode.Name].Create(SavedNode))
+
+#handle the drag and drop behavior with respect to the line

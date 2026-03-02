@@ -2,8 +2,11 @@
 class_name GenericCodeNode
 extends Resource
 
+enum Categories {CODE, ENDING, TRIGGER}
+
 #name equivalent in GenericNodeList
 @export var Name : String
+@export var Category : Categories = Categories.CODE
 
 @export var Parameters : Dictionary[String, Variant] = {}
 

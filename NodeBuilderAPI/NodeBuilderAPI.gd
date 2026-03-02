@@ -27,4 +27,20 @@ func InsertTitle(VictimNode: NodeUI) -> Label:
 	var NewLabel = TitleScene.instantiate()
 	if not NewLabel.is_class("Label"):
 		push_warning(TitleScene, " PackedScene does not return scene of root label")
+	
+	VictimNode.NodeItemContainer.add_child(NewLabel)
 	return NewLabel
+
+func InsertImage(VictimNode: NodeUI, FilePath: String) -> TextureRect:
+	#couldn't find VBox
+	if VictimNode.NodeItemContainer == null:
+		push_warning(VictimNode, ".NodeItemContainer == null!")
+		return null
+	
+	var NewImageRect: TextureRect = TextureRect.new()
+	
+	NewImageRect.texture = load(FilePath)
+	VictimNode.NodeItemContainer.add_child(NewImageRect)
+	
+	return NewImageRect
+	
