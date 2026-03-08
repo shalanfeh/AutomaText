@@ -3,18 +3,22 @@ class_name SequenceUI
 
 @export var DataHolder: SequenceData
 @export var LeafScene: PackedScene = preload("uid://dno4iwdrkcg8r")
+@export var TriggerNodeHolder: CenterContainer
 
 var TriggerNodeUI: NodeUI
 
 #uid key
 var LeafUI: Dictionary[int, LeafContainer]
 
-var CenterLocation: Vector2 = Vector2(0, 150)
-var LineHeight: int = 100
+var CenterLocation: Vector2 = Vector2(0, 0)
+var LineHeight: int = 200
 var HorizontalSpacing: int = 25
 
 #create UI elements from data and place them in dictionary/variables
 func _ready() -> void:
+	if DataHolder == null:
+		DataHolder = SequenceData.new()
+	
 	#trigger Node
 	if DataHolder.TriggerNode == null:
 		#case where trigger node doesn't exist
@@ -34,15 +38,57 @@ func _ready() -> void:
 	#Leafs
 	for ID: int in DataHolder.LeafDict:
 		#create the Leaf Container Scene
-		var NewScene: LeafContainer = LeafScene.instantiate()
-		NewScene.DataHolder = DataHolder.LeafDict[ID]
-		NewScene.LoadFromData()
-		
-		#Add it to the dictionary for tracking
-		LeafUI[ID] = NewScene
+		CreateLeafScene(ID)
 	
 	
 	BuildTree()
+
+
+func PlaceLeaf(LeafID: int, X: int, Y: int):	
+	var ParentLeaf: LeafContainer = LeafUI.get(LeafID)
+	
+	#Case where LeafID is nonsense
+	if ParentLeaf == null:
+		return
+	
+	#Add leaf to world
+	if ParentLeaf.get_parent() == null:
+		add_child(ParentLeaf) #fails if already in world
+	
+	#Set the leaf's position
+	ParentLeaf.Resize()
+	ParentLeaf.position = Vector2(X, Y)
+	#ParentLeaf.offset_bottom = 0
+	
+	#Check if the leaf has children
+	if ParentLeaf.DataHolder.EndingNode == null:
+		return
+	
+	#Check if it has connections
+	var Connector: Connections = ParentLeaf.DataHolder.EndingNode.GetParam("Connections")
+	if Connector == null:
+		push_error("Connector doesn't have connections in ending node ", ParentLeaf.DataHolder.EndingNode.Name)
+		return
+	
+	if LeafID == 1:
+		print("Leaf ", LeafID, " Upper: ", ReserveSpace(LeafID, TARGET.UPPER), 
+		" Lower: ", ReserveSpace(LeafID, TARGET.LOWER))
+	
+	
+	for ID in Connector.Upper:
+		PlaceLeaf(ID, 
+		ParentLeaf.size.x + HorizontalSpacing + X, 
+		Y + (ReserveSpace(ID, TARGET.LOWER) * LineHeight)
+		)
+	
+	for ID in Connector.Lower:
+		PlaceLeaf(ID, 
+		ParentLeaf.size.x + HorizontalSpacing + X, 
+		Y - (ReserveSpace(ID, TARGET.UPPER) * LineHeight)
+		)
+	
+	pass
+
 
 enum TARGET {UPPER, LOWER}
 func ReserveSpace(LeafID: int, Wanted: TARGET) -> int:
@@ -61,7 +107,7 @@ func ReserveSpace(LeafID: int, Wanted: TARGET) -> int:
 		push_error("Couldn't get connections for ending node ", LeafInfo.EndingNode)
 		return 1
 	
-	var ChildReservations: int = 0
+	var ChildReservations: int = 1
 	
 	if Wanted == TARGET.UPPER:
 		for ID in Connector.Upper:
@@ -72,52 +118,17 @@ func ReserveSpace(LeafID: int, Wanted: TARGET) -> int:
 		ChildReservations += ReserveSpace(ID, TARGET.LOWER)
 	return ChildReservations
 
-func PlaceLeaf(LeafID: int, X: int, Y: int):
-	var ParentLeaf: LeafContainer = LeafUI.get(LeafID)
-	
-	#Case where LeafID is nonsense
-	if ParentLeaf == null:
-		return
-	
-	#Set the leaf's position
-	ParentLeaf.set_position(Vector2(X, Y))
-	ParentLeaf.offset_bottom = 0
-	
-	#Check if the leaf has children
-	if ParentLeaf.DataHolder.EndingNode == null:
-		return
-	
-	#Check if it has connections
-	var Connector: Connections = ParentLeaf.DataHolder.EndingNode.GetParam("Connections")
-	if Connector == null:
-		push_error("Connector doesn't have connections in ending node ", ParentLeaf.DataHolder.EndingNode.Name)
-		return
-	
-	for ID in Connector.Upper:
-		PlaceLeaf(ID, 
-		ParentLeaf.size.x + HorizontalSpacing + X, 
-		Y + (ReserveSpace(ID, TARGET.LOWER) * LineHeight)
-		)
-	
-	for ID in Connector.Lower:
-		PlaceLeaf(ID, 
-		ParentLeaf.size.x + HorizontalSpacing + X, 
-		Y - (ReserveSpace(ID, TARGET.UPPER) * LineHeight)
-		)
-	
-	pass
-
 #function that creates UI elements when necessary and places them in the world
 func BuildTree() -> void:
 	#add all related scenes into the world
-	add_child(TriggerNodeUI)
+	if TriggerNodeUI.get_parent() == null:
+		TriggerNodeHolder.add_child(TriggerNodeUI)
 	
-	TriggerNodeUI.set_global_position(CenterLocation)
-	TriggerNodeUI.offset_bottom = 0
-	
-	#Leafs
+	#Leafs - these are added into the world by place leaf
+	#remove all of them from world as some could've become unneccessary
 	for ID: int in DataHolder.LeafDict:
-		add_child(LeafUI[ID]) #fails if already added
+		if LeafUI[ID].get_parent() == self:
+			remove_child(LeafUI[ID])
 	
 	#Place Leafs recursively into world
 	#Start from root ID 1
@@ -125,40 +136,44 @@ func BuildTree() -> void:
 	
 	pass
 
-#for testing purposes
-func _init() -> void:
-	DataHolder = SequenceData.new()
+#create a new leaf for UI purposes
+func CreateLeafScene(ID: int) -> LeafContainer:
+	if LeafUI.has(ID):
+		return LeafUI[ID]
 	
-	#SavedCodeNode resource. These will be individual and not shared in
-	#an actual scenario. This is a test to see if the UI works
-	var PrintNode = SavedCodeNode.new()
-	PrintNode.Name = "PrintCode"
+	#create the scene
+	var NewScene: LeafContainer = LeafScene.instantiate()
+	NewScene.DataHolder = DataHolder.LeafDict[ID]
 	
-	var EndingNode = SavedCodeNode.new()
-	EndingNode.Name = "RandomizedEnding"
+	#connect it to the propagator
+	NewScene.RequestingLeafPropagation.connect(LeafPropagator)
 	
-	var EndingConnects: Connections = Connections.new(1, 1)
-	EndingConnects.Upper[0] = 2
-	EndingConnects.Lower[0] = 3
+	#connect it to the tree builder
+	NewScene.RequestTreeRebuild.connect(BuildTree)
 	
-	EndingNode.Parameters["Connections"] = EndingConnects
+	#add it to dictionary for tracking
+	LeafUI[ID] = NewScene
 	
-	#root leaf
-	var Root = DataHolder.CreateLeaf()
-	print(Root)
-	DataHolder.LeafDict[Root].LineNodes = LineData.new()
+	#load the scene
+	NewScene.LoadFromData()
 	
-	DataHolder.CreateLeaf()
-	DataHolder.LeafDict[2].LineNodes = LineData.new()
+	return NewScene
+
+func LeafPropagator(Connector: Connections) -> void:
+	for idx: int in range(Connector.Upper.size()):
+		if Connector.Upper[idx] == -1:
+			#create a new leaf in the data
+			var NewID = DataHolder.CreateLeaf()
+			Connector.Upper[idx] = NewID
+			
+			#load the new leaf in data
+			CreateLeafScene(NewID)
 	
-	DataHolder.CreateLeaf()
-	DataHolder.LeafDict[3].LineNodes = LineData.new()
+	for idx: int in range(Connector.Lower.size()):
+		if Connector.Lower[idx] == -1:
+			var NewID = DataHolder.CreateLeaf()
+			Connector.Lower[idx] = NewID
+			
+			#load the new leaf in data
+			CreateLeafScene(NewID)
 	
-	DataHolder.LeafDict[Root].LineNodes.Insert(PrintNode)
-	DataHolder.LeafDict[Root].EndingNode = EndingNode
-	
-	DataHolder.LeafDict[2].LineNodes.Insert(PrintNode)
-	DataHolder.LeafDict[2].LineNodes.Insert(PrintNode)
-	DataHolder.LeafDict[2].LineNodes.Insert(PrintNode)
-	
-	DataHolder.LeafDict[3].LineNodes.Insert(PrintNode)

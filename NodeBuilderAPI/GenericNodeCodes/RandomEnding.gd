@@ -10,6 +10,9 @@ func Run(Context: BotThread, Pointer: ExecutionPointer, SaveData: SavedCodeNode)
 #takes in a savedNode to build the node with customized parameters
 func Create(Modifications: SavedCodeNode = null) -> NodeUI:
 	var CreatedNode: NodeUI = NodeBuilderAPI.NewNode(Modifications)
+	CreatedNode.SaveData.Name = Name
+	
+	CreatedNode.SaveData.Parameters["Connections"] = Connections.new(1, 1)
 	
 	var Title: Label = NodeBuilderAPI.InsertTitle(CreatedNode)
 	Title.text = "50/50 Randomizer"
@@ -19,9 +22,5 @@ func Create(Modifications: SavedCodeNode = null) -> NodeUI:
 func _init() -> void:
 	Name = "RandomizedEnding"
 	Category = Categories.ENDING
-	
-	Parameters = {
-		"Connections" = Connections.new(1, 1)
-	}
 	
 	super()

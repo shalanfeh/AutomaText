@@ -18,6 +18,7 @@ config/icon="res://Archive/icon.svg"
 
 NodeBuilderAPI="*uid://s182awosbvlh"
 GenericNodeList="*uid://v074du426cfc"
+DragHandler="*uid://dr4x6tc13sndo"
 
 [dotnet]
 

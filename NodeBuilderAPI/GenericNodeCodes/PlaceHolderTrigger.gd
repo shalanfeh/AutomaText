@@ -10,6 +10,7 @@ func Run(Context: BotThread, Pointer: ExecutionPointer, SaveData: SavedCodeNode)
 #takes in a savedNode to build the node with customized parameters
 func Create(Modifications: SavedCodeNode = null) -> NodeUI:
 	var CreatedNode: NodeUI = NodeBuilderAPI.NewNode(Modifications)
+	CreatedNode.SaveData.Name = Name
 	
 	var ImgRect: TextureRect = NodeBuilderAPI.InsertImage(CreatedNode, "uid://d31qji6n8202u")
 	ImgRect.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL

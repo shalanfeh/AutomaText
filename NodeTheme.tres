@@ -1,0 +1,49 @@
+[gd_resource type="Theme" format=3 uid="uid://bd7wnan43y5uf"]
+
+[ext_resource type="StyleBox" uid="uid://v0mp0oank2w8" path="res://Node.tres" id="1_x7ka7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7ka7"]
+bg_color = Color(1, 0.6030197, 0.52318424, 1)
+border_width_left = 8
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.12773594, 0.12773597, 0.12773585, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mxf1"]
+bg_color = Color(0, 0.81941956, 0.8780501, 1)
+border_width_left = 8
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.12773594, 0.12773597, 0.12773585, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[resource]
+EndNode/base_type = &"PanelContainer"
+EndNode/styles/panel = SubResource("StyleBoxFlat_x7ka7")
+Label/colors/font_outline_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 10
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 13
+Label/font_sizes/font_size = 50
+PanelContainer/styles/panel = ExtResource("1_x7ka7")
+TriggerNode/base_type = &"PanelContainer"
+TriggerNode/styles/panel = SubResource("StyleBoxFlat_4mxf1")

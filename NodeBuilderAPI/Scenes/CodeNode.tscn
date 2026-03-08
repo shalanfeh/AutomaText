@@ -1,20 +1,18 @@
 [gd_scene format=3 uid="uid://dfosuh8726bvi"]
 
+[ext_resource type="Theme" uid="uid://bd7wnan43y5uf" path="res://NodeTheme.tres" id="1_peftt"]
 [ext_resource type="Script" uid="uid://bw8ywpqbyikyf" path="res://NodeBuilderAPI/BaseResources/NodeUI.gd" id="1_stgt2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lwwx"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-shadow_size = 5
 
 [node name="CodeNode" type="PanelContainer" unique_id=1634294937 node_paths=PackedStringArray("NodeItemContainer")]
 custom_minimum_size = Vector2(50, 10)
-anchors_preset = -1
-theme_override_styles/panel = SubResource("StyleBoxFlat_1lwwx")
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 50.0
+offset_bottom = 5.0
+grow_vertical = 2
+theme = ExtResource("1_peftt")
 script = ExtResource("1_stgt2")
 NodeItemContainer = NodePath("Container")
 

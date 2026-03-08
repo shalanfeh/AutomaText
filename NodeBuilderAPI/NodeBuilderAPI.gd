@@ -3,9 +3,6 @@ extends Node
 #CodeNode.tscn
 var BaseNode : PackedScene = preload("uid://dfosuh8726bvi")
 
-#title.tscn
-var TitleScene : PackedScene = preload("uid://cbqb204tp0cgu")
-
 
 func NewNode(SaveData: SavedCodeNode) -> NodeUI:
 	var Instance: NodeUI = BaseNode.instantiate()
@@ -16,19 +13,22 @@ func NewNode(SaveData: SavedCodeNode) -> NodeUI:
 	else:
 		Instance.SaveData = SaveData
 	
-	return Instance
+	var GenericNode: GenericCodeNode = GenericNodeList.GenericList.get(Instance.SaveData.Name)
+	if GenericNode:
+		if GenericNode.Category == GenericNode.Categories.ENDING:
+			Instance.set_theme_type_variation("EndNode")
 	
+	return Instance
+
 func InsertTitle(VictimNode: NodeUI) -> Label:
 	#couldn't find VBox
 	if VictimNode.NodeItemContainer == null:
 		push_warning(VictimNode, ".NodeItemContainer == null!")
 		return null
 	
-	var NewLabel = TitleScene.instantiate()
-	if not NewLabel.is_class("Label"):
-		push_warning(TitleScene, " PackedScene does not return scene of root label")
-	
+	var NewLabel = Label.new()
 	VictimNode.NodeItemContainer.add_child(NewLabel)
+	
 	return NewLabel
 
 func InsertImage(VictimNode: NodeUI, FilePath: String) -> TextureRect:

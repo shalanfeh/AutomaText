@@ -3,10 +3,14 @@ class_name GenericCodeNode
 extends Resource
 
 enum Categories {CODE, ENDING, TRIGGER}
+enum DragOnBehaviors {DEFAULT, PLACE, REPLACE}
 
 #name equivalent in GenericNodeList
 @export var Name : String
+
+#Behavioral variables
 @export var Category : Categories = Categories.CODE
+@export var DragOnOverride : DragOnBehaviors = DragOnBehaviors.DEFAULT
 
 @export var Parameters : Dictionary[String, Variant] = {}
 
@@ -18,6 +22,22 @@ enum Categories {CODE, ENDING, TRIGGER}
 #takes in a savedNode to build the node with customized parameters
 @abstract func Create(Modifications: SavedCodeNode = null) -> NodeUI
 
+#Returns drag-on behavior. Required to handle default behavior
+func GetDragOnBehavior() -> DragOnBehaviors:
+	if DragOnOverride == DragOnBehaviors.DEFAULT:
+		if Category == Categories.CODE:
+			return DragOnBehaviors.PLACE
+		else:
+			return DragOnBehaviors.REPLACE
+	
+	return DragOnOverride
+
 #adds resource into GenericNodeList
 func _init() -> void:
 	GenericNodeList.Insert(Name, self)
+	
+	#category specific default parameters
+	#this causes a cyclic error lmfao
+	if Category == Categories.ENDING:
+		if Parameters.get("Connections") == null:
+			Parameters["Connections"] = Connections.new(0, 0)

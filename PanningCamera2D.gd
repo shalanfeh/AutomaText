@@ -2,9 +2,9 @@ extends Camera2D
 class_name PanningCamera2D
 
 const MIN_ZOOM: float = 0.4
-const MAX_ZOOM: float = 1
+const MAX_ZOOM: float = 1.3
 const ZOOM_RATE: float = 8.0
-const ZOOM_INCREMENT: float = 0.1
+const ZOOM_INCREMENT: float = 0.025
 
 var _target_zoom: float = 1
 
@@ -19,6 +19,9 @@ func _physics_process(delta: float) -> void:
 	#Get the new mouses position AFTER zoom (mouse in world)
 	var new_mouse_pos := get_global_mouse_position()
 	position += mouse_pos - new_mouse_pos
+	
+	#clamp position so it doesn't go out of bounds
+	position = ClampPosition(position)
 	
 	#stop doing camera movement
 	set_physics_process(not is_equal_approx(zoom.x, _target_zoom))
@@ -46,9 +49,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			if event.double_click:
 				focus_position(get_global_mouse_position())
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and DragHandler.Dragging == false:
 		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
 			position -= event.relative / zoom
+			position = ClampPosition(position)
 
 
 func zoom_out() -> void:
@@ -60,7 +64,15 @@ func zoom_in() -> void:
 	_target_zoom = min(_target_zoom + ZOOM_INCREMENT, MAX_ZOOM)
 	set_physics_process(true)
 
+func ClampPosition(TargetPos: Vector2) -> Vector2:
+	var Result: Vector2 = Vector2(
+		clamp(TargetPos.x, 
+			limit_left+get_viewport_rect().size.x/2,limit_right-get_viewport_rect().size.x/2),
+		clamp(TargetPos.y, 
+			limit_top+get_viewport_rect().size.y/2,limit_bottom-get_viewport_rect().size.y/2)
+	)
+	return Result
 
 func focus_position(target_position: Vector2) -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, "position", target_position, 0.2)
+	tween.tween_property(self, "position", ClampPosition(target_position), 0.2)

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b0gdg1n7c0isl" path="res://NodeManager/Sequence/SequenceUI.gd" id="1_cguwc"]
 [ext_resource type="PackedScene" uid="uid://ck2ly36utex3" path="res://NodeManager/Leaf/leaf_container.tscn" id="2_cguwc"]
 [ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://PanningCamera2D.gd" id="3_wicfy"]
+[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://BiggerChecker2.png" id="4_go42g"]
+[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://tree.tscn" id="5_sreuk"]
 
 [node name="Control" type="Control" unique_id=55985612]
 layout_mode = 3
@@ -10,16 +12,45 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Control" type="Control" parent="." unique_id=315806881]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder")]
 script = ExtResource("1_cguwc")
 LeafScene = ExtResource("2_cguwc")
+TriggerNodeHolder = NodePath("../CenterContainer")
 
 [node name="PanningCamera2D" type="Camera2D" parent="." unique_id=90618824]
+limit_left = -1000
+limit_top = -40000
+limit_right = 85000
+limit_bottom = 40000
+position_smoothing_speed = 30.0
 script = ExtResource("3_wicfy")
 metadata/_custom_type_script = "uid://byqbhm2erodr3"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1234661672]
+show_behind_parent = true
+z_index = -100
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2000.0
+offset_top = -45000.0
+offset_right = 88000.0
+offset_bottom = 45000.0
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = ExtResource("4_go42g")
+stretch_mode = 1
+
+[node name="Tree" parent="." unique_id=562116176 instance=ExtResource("5_sreuk")]
+layout_mode = 0
+offset_left = 260.0
+offset_top = -482.0
+offset_right = 790.0
+offset_bottom = -210.0
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1785580854]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

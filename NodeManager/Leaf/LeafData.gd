@@ -14,13 +14,16 @@ func SetEndingNode(NewNode: SavedCodeNode) -> bool:
 	#check if the NewNode is in category "ending"
 	if GenericCode != null:
 		if GenericCode.Category != GenericCode.Categories.ENDING:
-			push_warning(NewNode.Name, " Is not an ending node")
+			push_error(NewNode.Name, " Is not an ending node")
 			return false #failed, not an ending node
 	else:
-		push_warning(NewNode.Name, " doesn't have a generic node in GenericList")
+		push_error(NewNode.Name, " doesn't have a generic node in GenericList")
 		return false #failed, no GenericCode
 	
 	#update the variable
 	EndingNode = NewNode
 	
 	return true
+
+func _init() -> void:
+	LineNodes = LineData.new()

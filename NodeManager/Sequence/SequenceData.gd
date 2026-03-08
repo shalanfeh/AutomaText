@@ -44,3 +44,6 @@ func SetTriggerNode(NewNode: SavedCodeNode) -> bool:
 	TriggerNode = NewNode
 	
 	return true
+
+func _init() -> void:
+	CreateLeaf()
