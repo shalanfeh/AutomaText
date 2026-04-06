@@ -6,11 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://BiggerChecker2.png" id="4_go42g"]
 [ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://tree.tscn" id="5_sreuk"]
 
-[node name="Control" type="Control" unique_id=55985612]
+[node name="Control" type="Control" unique_id=929101201]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder")]
 script = ExtResource("1_cguwc")

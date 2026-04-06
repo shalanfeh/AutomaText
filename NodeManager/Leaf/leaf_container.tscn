@@ -3,14 +3,15 @@
 [ext_resource type="Script" uid="uid://c5d71imvrgk46" path="res://NodeManager/Leaf/LeafUI.gd" id="1_4k564"]
 [ext_resource type="PackedScene" uid="uid://dno4iwdrkcg8r" path="res://NodeManager/Line/line_container.tscn" id="1_cqyio"]
 [ext_resource type="Theme" uid="uid://bd7wnan43y5uf" path="res://NodeTheme.tres" id="3_4k564"]
+[ext_resource type="Texture2D" uid="uid://0g2oueldjjl4" path="res://Archive/icon.svg" id="4_r7imk"]
 
 [node name="CenterContainer" type="CenterContainer" unique_id=1946187160 node_paths=PackedStringArray("HBox", "LineUI", "EndingHolderUI")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -35.0
+offset_top = -324.0
 offset_right = 110.0
-offset_bottom = 35.0
+offset_bottom = -254.0
 grow_vertical = 2
 script = ExtResource("1_4k564")
 HBox = NodePath("LeafContainer/MarginContainer/HBoxContainer")
@@ -37,3 +38,9 @@ layout_mode = 2
 [node name="CenterContainer" type="CenterContainer" parent="LeafContainer/MarginContainer/HBoxContainer" unique_id=706733772]
 layout_mode = 2
 theme = ExtResource("3_4k564")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=226558847]
+z_index = -3
+position = Vector2(35.5, 34.000004)
+scale = Vector2(0.5546875, 0.53125006)
+texture = ExtResource("4_r7imk")

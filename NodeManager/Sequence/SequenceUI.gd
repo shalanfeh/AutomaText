@@ -44,7 +44,7 @@ func _ready() -> void:
 	BuildTree()
 
 
-func PlaceLeaf(LeafID: int, X: int, Y: int):	
+func PlaceLeaf(LeafID: int, X: int, Y: int):
 	var ParentLeaf: LeafContainer = LeafUI.get(LeafID)
 	
 	#Case where LeafID is nonsense
@@ -55,9 +55,15 @@ func PlaceLeaf(LeafID: int, X: int, Y: int):
 	if ParentLeaf.get_parent() == null:
 		add_child(ParentLeaf) #fails if already in world
 	
+	
 	#Set the leaf's position
-	ParentLeaf.Resize()
-	ParentLeaf.position = Vector2(X, Y)
+	#ParentLeaf.Resize()
+	print("========")
+	print("LeafID: ", LeafID)
+	print("Supposed to be at: X(", X, "), Y(", Y, ")")
+	ParentLeaf.global_position = Vector2(X, Y)
+	print("Placed at: X(", ParentLeaf.position.x, "), Y(", ParentLeaf.position.y, ")")
+	print("========")
 	#ParentLeaf.offset_bottom = 0
 	
 	#Check if the leaf has children
@@ -69,11 +75,6 @@ func PlaceLeaf(LeafID: int, X: int, Y: int):
 	if Connector == null:
 		push_error("Connector doesn't have connections in ending node ", ParentLeaf.DataHolder.EndingNode.Name)
 		return
-	
-	if LeafID == 1:
-		print("Leaf ", LeafID, " Upper: ", ReserveSpace(LeafID, TARGET.UPPER), 
-		" Lower: ", ReserveSpace(LeafID, TARGET.LOWER))
-	
 	
 	for ID in Connector.Upper:
 		PlaceLeaf(ID, 
