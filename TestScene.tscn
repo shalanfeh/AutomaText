@@ -2,18 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b0gdg1n7c0isl" path="res://NodeManager/Sequence/SequenceUI.gd" id="1_cguwc"]
 [ext_resource type="PackedScene" uid="uid://ck2ly36utex3" path="res://NodeManager/Leaf/leaf_container.tscn" id="2_cguwc"]
-[ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://PanningCamera2D.gd" id="3_wicfy"]
-[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://BiggerChecker2.png" id="4_go42g"]
-[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://tree.tscn" id="5_sreuk"]
+[ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="3_wicfy"]
+[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="4_go42g"]
+[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="5_sreuk"]
 
 [node name="Control" type="Control" unique_id=929101201]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder")]
-script = ExtResource("1_cguwc")
-LeafScene = ExtResource("2_cguwc")
-TriggerNodeHolder = NodePath("../CenterContainer")
 
 [node name="PanningCamera2D" type="Camera2D" parent="." unique_id=90618824]
 limit_left = -1000
@@ -50,5 +45,10 @@ offset_bottom = -210.0
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1785580854]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -20.0
+offset_bottom = 20.0
+
+[node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder")]
+script = ExtResource("1_cguwc")
+LeafScene = ExtResource("2_cguwc")
+TriggerNodeHolder = NodePath("../CenterContainer")

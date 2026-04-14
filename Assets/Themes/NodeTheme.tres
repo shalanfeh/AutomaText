@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bd7wnan43y5uf"]
 
-[ext_resource type="StyleBox" uid="uid://v0mp0oank2w8" path="res://Node.tres" id="1_x7ka7"]
+[ext_resource type="StyleBox" uid="uid://v0mp0oank2w8" path="res://Assets/Themes/Node.tres" id="1_x7ka7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7ka7"]
 bg_color = Color(1, 0.6030197, 0.52318424, 1)

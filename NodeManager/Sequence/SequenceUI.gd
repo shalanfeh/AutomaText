@@ -11,133 +11,226 @@ var TriggerNodeUI: NodeUI
 var LeafUI: Dictionary[int, LeafContainer]
 
 var CenterLocation: Vector2 = Vector2(0, 0)
-var LineHeight: int = 200
 var HorizontalSpacing: int = 25
+var NodeGap: float = 20.0
 
-#create UI elements from data and place them in dictionary/variables
+#create UI elements from data and place them in dictionary/variables 
 func _ready() -> void:
 	if DataHolder == null:
 		DataHolder = SequenceData.new()
 	
-	#trigger Node
+	#trigger Node 
 	if DataHolder.TriggerNode == null:
-		#case where trigger node doesn't exist
+		 #case where trigger node doesn't exist 
 		var TempGenericCode: GenericCodeNode = GenericNodeList.GenericList.get("PlaceHolderTrigger")
 		if TempGenericCode == null:
 			push_error("Couldn't find ", TempGenericCode.Name, " in GenericList")
 			return
 		TriggerNodeUI = TempGenericCode.Create(null)
 	else:
-		#case where trigger node exists
+		#case where trigger node exists 
 		var TempGenericCode: GenericCodeNode = GenericNodeList.GenericList.get(DataHolder.TriggerNode.Name)
 		if TempGenericCode == null:
 			push_error("Couldn't find ", TempGenericCode.Name, " in GenericList")
 			return
 		TriggerNodeUI = TempGenericCode.Create(DataHolder.TriggerNode)
 	
-	#Leafs
+	#Leafs 
 	for ID: int in DataHolder.LeafDict:
-		#create the Leaf Container Scene
 		CreateLeafScene(ID)
-	
 	
 	BuildTree()
 
 
-func PlaceLeaf(LeafID: int, X: int, Y: int):
-	var ParentLeaf: LeafContainer = LeafUI.get(LeafID)
+# --- Layout Algorithm ---
+
+# Returns Vector2(upper_extent, lower_extent)
+# upper_extent: how far above the node's center the subtree extends (positive value)
+# lower_extent: how far below the node's center the subtree extends (positive value)
+func _measure_extents(leaf_id: int) -> Vector2:
+	var leaf: LeafContainer = LeafUI.get(leaf_id)
+	if leaf == null:
+		return Vector2(0, 0)
 	
-	#Case where LeafID is nonsense
-	if ParentLeaf == null:
+	var node_height: float = leaf.size.y if leaf.size.y > 0 else 50.0
+	var half_height: float = node_height / 2.0
+	
+	var leaf_data: LeafData = DataHolder.LeafDict.get(leaf_id)
+	if leaf_data == null or leaf_data.EndingNode == null:
+		return Vector2(half_height, half_height)
+	
+	var connector: Connections = leaf_data.EndingNode.GetParam("Connections")
+	if connector == null:
+		return Vector2(half_height, half_height)
+	
+	# Calculate how far upper children extend above this node's center
+	var upper_extent: float = half_height
+	if not connector.Upper.is_empty():
+		# Stack upper children above the node
+		var cursor: float = half_height + NodeGap
+		for i in range(connector.Upper.size() - 1, -1, -1):
+			var child_extents: Vector2 = _measure_extents(connector.Upper[i])
+			# The child's lower extent faces toward us
+			cursor += child_extents.y
+			# The child's upper extent faces away
+			#var child_top: float = cursor + child_extents.x - child_extents.y
+			cursor += child_extents.x
+			if i > 0:
+				cursor += NodeGap
+		upper_extent = cursor - NodeGap + NodeGap  # simplify: just cursor
+		# Recalculate properly:
+		upper_extent = half_height + NodeGap
+		for i in range(connector.Upper.size()):
+			var child_extents: Vector2 = _measure_extents(connector.Upper[i])
+			var child_total: float = child_extents.x + child_extents.y
+			upper_extent += child_total
+			if i < connector.Upper.size() - 1:
+				upper_extent += NodeGap
+	
+	# Calculate how far lower children extend below this node's center
+	var lower_extent: float = half_height
+	if not connector.Lower.is_empty():
+		lower_extent = half_height + NodeGap
+		for i in range(connector.Lower.size()):
+			var child_extents: Vector2 = _measure_extents(connector.Lower[i])
+			var child_total: float = child_extents.x + child_extents.y
+			lower_extent += child_total
+			if i < connector.Lower.size() - 1:
+				lower_extent += NodeGap
+	
+	return Vector2(upper_extent, lower_extent)
+
+
+func _compute_positions(leaf_id: int, parent_right_x: float, center_y: float, positions: Dictionary) -> void:
+	var leaf: LeafContainer = LeafUI.get(leaf_id)
+	if leaf == null:
 		return
 	
-	#Add leaf to world
-	if ParentLeaf.get_parent() == null:
-		add_child(ParentLeaf) #fails if already in world
+	var node_width: float = leaf.size.x if leaf.size.x > 0 else 100.0
+	var node_height: float = leaf.size.y if leaf.size.y > 0 else 50.0
+	var my_x: float = parent_right_x + HorizontalSpacing
 	
+	positions[leaf_id] = Vector2(my_x, center_y)
 	
-	#Set the leaf's position
-	#ParentLeaf.Resize()
-	print("========")
-	print("LeafID: ", LeafID)
-	print("Supposed to be at: X(", X, "), Y(", Y, ")")
-	ParentLeaf.global_position = Vector2(X, Y)
-	print("Placed at: X(", ParentLeaf.position.x, "), Y(", ParentLeaf.position.y, ")")
-	print("========")
-	#ParentLeaf.offset_bottom = 0
-	
-	#Check if the leaf has children
-	if ParentLeaf.DataHolder.EndingNode == null:
+	var leaf_data: LeafData = DataHolder.LeafDict.get(leaf_id)
+	if leaf_data == null or leaf_data.EndingNode == null:
 		return
 	
-	#Check if it has connections
-	var Connector: Connections = ParentLeaf.DataHolder.EndingNode.GetParam("Connections")
-	if Connector == null:
-		push_error("Connector doesn't have connections in ending node ", ParentLeaf.DataHolder.EndingNode.Name)
+	var connector: Connections = leaf_data.EndingNode.GetParam("Connections")
+	if connector == null:
 		return
 	
-	for ID in Connector.Upper:
-		PlaceLeaf(ID, 
-		ParentLeaf.size.x + HorizontalSpacing + X, 
-		Y + (ReserveSpace(ID, TARGET.LOWER) * LineHeight)
+	var my_right: float = my_x + node_width
+	
+	# Place upper children (stack upward from parent)
+	if not connector.Upper.is_empty():
+		var cursor_y: float = center_y - node_height / 2.0 - NodeGap
+		for i in range(connector.Upper.size() - 1, -1, -1):
+			var child_extents: Vector2 = _measure_extents(connector.Upper[i])
+			# Child's lower extent faces the parent (toward center)
+			var child_center: float = cursor_y - child_extents.y
+			_compute_positions(connector.Upper[i], my_right, child_center, positions)
+			# Move cursor up past the child's upper extent
+			cursor_y = child_center - child_extents.x - NodeGap
+	
+	# Place lower children (stack downward from parent)
+	if not connector.Lower.is_empty():
+		var cursor_y: float = center_y + node_height / 2.0 + NodeGap
+		for i in range(connector.Lower.size()):
+			var child_extents: Vector2 = _measure_extents(connector.Lower[i])
+			# Child's upper extent faces the parent (toward center)
+			var child_center: float = cursor_y + child_extents.x
+			_compute_positions(connector.Lower[i], my_right, child_center, positions)
+			# Move cursor down past the child's lower extent
+			cursor_y = child_center + child_extents.y + NodeGap
+
+
+# --- Apply positions to UI ---
+
+func _apply_positions(positions: Dictionary) -> void:
+	for id: int in positions:
+		var leaf: LeafContainer = LeafUI.get(id)
+		if leaf == null:
+			continue
+		
+		if leaf.get_parent() == null:
+			add_child(leaf)
+		
+		var pos: Vector2 = positions[id]
+		
+		#== Snapping behavior ==
+		#leaf.global_position = Vector2(
+			#pos.x,
+			#CenterLocation.y + pos.y - leaf.size.y / 2.0
+		#)
+		
+		#== Tweening behavior ==
+		#Get the new location
+		var target: Vector2 = Vector2(
+			pos.x,
+			CenterLocation.y + pos.y - leaf.size.y / 2.0
 		)
-	
-	for ID in Connector.Lower:
-		PlaceLeaf(ID, 
-		ParentLeaf.size.x + HorizontalSpacing + X, 
-		Y - (ReserveSpace(ID, TARGET.UPPER) * LineHeight)
-		)
-	
-	pass
+		
+		#Make sure it's not moving already
+		if leaf.has_meta("tween"):
+			var old_tween = leaf.get_meta("tween")
+			if old_tween.is_valid():
+				old_tween.kill()
+		
+		#Move it
+		var tween = create_tween()
+		leaf.set_meta("tween", tween)
+		tween.tween_property(leaf, "global_position", target, 0.3)\
+			.set_ease(Tween.EASE_OUT)\
+			.set_trans(Tween.TRANS_CUBIC)
 
 
-enum TARGET {UPPER, LOWER}
-func ReserveSpace(LeafID: int, Wanted: TARGET) -> int:
-	var LeafInfo: LeafData = DataHolder.LeafDict.get(LeafID)
-	
-	#case where leafID is bad
-	if LeafInfo == null:
-		return 0
-	
-	#case where there is no ending node
-	if LeafInfo.EndingNode == null:
-		return 1
-	
-	var Connector: Connections = LeafInfo.EndingNode.GetParam("Connections")
-	if Connector == null:
-		push_error("Couldn't get connections for ending node ", LeafInfo.EndingNode)
-		return 1
-	
-	var ChildReservations: int = 1
-	
-	if Wanted == TARGET.UPPER:
-		for ID in Connector.Upper:
-			ChildReservations += ReserveSpace(ID, TARGET.UPPER)
-		return ChildReservations
-	
-	for ID in Connector.Lower:
-		ChildReservations += ReserveSpace(ID, TARGET.LOWER)
-	return ChildReservations
+# --- BuildTree ---
 
-#function that creates UI elements when necessary and places them in the world
 func BuildTree() -> void:
 	#add all related scenes into the world
 	if TriggerNodeUI.get_parent() == null:
 		TriggerNodeHolder.add_child(TriggerNodeUI)
 	
 	#Leafs - these are added into the world by place leaf
-	#remove all of them from world as some could've become unneccessary
+	#remove all of them from world as some could've become unneccessary 
 	for ID: int in DataHolder.LeafDict:
-		if LeafUI[ID].get_parent() == self:
+		if LeafUI.has(ID) and LeafUI[ID].get_parent() == self:
 			remove_child(LeafUI[ID])
 	
-	#Place Leafs recursively into world
-	#Start from root ID 1
-	PlaceLeaf(1, CenterLocation.x + TriggerNodeUI.size.x + HorizontalSpacing, CenterLocation.y)
+	#place leafs into world
+	for ID: int in LeafUI:
+		var leaf: LeafContainer = LeafUI[ID]
+		if leaf.get_parent() == null:
+			add_child(leaf)
 	
-	pass
+	await get_tree().process_frame
+	
+	#remove leafs from world, we add and remove to force godot to calc leaf size
+	for ID: int in LeafUI:
+		var leaf: LeafContainer = LeafUI[ID]
+		if leaf.get_parent() == self:
+			remove_child(leaf)
+	
+	var root_x: float = CenterLocation.x + TriggerNodeUI.size.x
+	
+	var positions: Dictionary = {}
+	_compute_positions(1, root_x, 0.0, positions)
+	
+	# DEBUG
+	#for id: int in positions:
+		#var leaf: LeafContainer = LeafUI.get(id)
+		#var pos: Vector2 = positions[id]
+		#if leaf != null:
+			#var extents: Vector2 = _measure_extents(id)
+			#print("ID:", id, " pos:", pos, " size:", leaf.size, " top:", pos.y - leaf.size.y/2.0, " bottom:", pos.y + leaf.size.y/2.0, " extents:", extents)
+	#
+	_apply_positions(positions)
 
-#create a new leaf for UI purposes
+
+# --- Leaf creation ---
+
+#create new leaf for UI
 func CreateLeafScene(ID: int) -> LeafContainer:
 	if LeafUI.has(ID):
 		return LeafUI[ID]
@@ -146,24 +239,25 @@ func CreateLeafScene(ID: int) -> LeafContainer:
 	var NewScene: LeafContainer = LeafScene.instantiate()
 	NewScene.DataHolder = DataHolder.LeafDict[ID]
 	
-	#connect it to the propagator
+	#connect it to propagator
 	NewScene.RequestingLeafPropagation.connect(LeafPropagator)
 	
 	#connect it to the tree builder
 	NewScene.RequestTreeRebuild.connect(BuildTree)
 	
-	#add it to dictionary for tracking
+	#add to dictionary for tracking
 	LeafUI[ID] = NewScene
 	
-	#load the scene
+	#Load the scene
 	NewScene.LoadFromData()
 	
 	return NewScene
 
+
 func LeafPropagator(Connector: Connections) -> void:
 	for idx: int in range(Connector.Upper.size()):
 		if Connector.Upper[idx] == -1:
-			#create a new leaf in the data
+			#create new leaf in data
 			var NewID = DataHolder.CreateLeaf()
 			Connector.Upper[idx] = NewID
 			
@@ -177,4 +271,3 @@ func LeafPropagator(Connector: Connections) -> void:
 			
 			#load the new leaf in data
 			CreateLeafScene(NewID)
-	

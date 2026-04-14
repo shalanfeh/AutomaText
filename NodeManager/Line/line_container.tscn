@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dno4iwdrkcg8r"]
 
-[ext_resource type="Theme" uid="uid://b1gtc0hs4ygo3" path="res://LineTheme.tres" id="1_ewbs6"]
+[ext_resource type="Theme" uid="uid://b1gtc0hs4ygo3" path="res://Assets/Themes/LineTheme.tres" id="1_ewbs6"]
 [ext_resource type="Script" uid="uid://banqt0cevwdhk" path="res://NodeManager/Line/LineContainer.gd" id="1_wxq6o"]
 
 [node name="LineContainer" type="PanelContainer" unique_id=14589049 node_paths=PackedStringArray("HContainer")]

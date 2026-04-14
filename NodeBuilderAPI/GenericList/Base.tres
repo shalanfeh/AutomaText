@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://bul3yfp5hlm3o"]
+
+[ext_resource type="Script" uid="uid://db21uxqrio4e1" path="res://NodeBuilderAPI/GenericList/NodeUIDHolder.gd" id="1_thxld"]
+
+[resource]
+script = ExtResource("1_thxld")
+Name = "Base"
+UIDList = Array[String](["uid://drpwlhjoi30ex", "uid://dqx2qwb5xqjjb", "uid://dlp3xpqkosm4f", "uid://ibvf2c4migw0", "uid://c82lb82alhjib"])

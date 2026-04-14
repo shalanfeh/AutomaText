@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="AutomaText"
+run/main_scene="uid://dfhg0beibsxox"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://Archive/icon.svg"
 
@@ -33,3 +34,4 @@ project/assembly_name="AutomaText"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

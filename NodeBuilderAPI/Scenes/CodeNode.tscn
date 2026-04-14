@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfosuh8726bvi"]
 
-[ext_resource type="Theme" uid="uid://bd7wnan43y5uf" path="res://NodeTheme.tres" id="1_peftt"]
+[ext_resource type="Theme" uid="uid://bd7wnan43y5uf" path="res://Assets/Themes/NodeTheme.tres" id="1_peftt"]
 [ext_resource type="Script" uid="uid://bw8ywpqbyikyf" path="res://NodeBuilderAPI/BaseResources/NodeUI.gd" id="1_stgt2"]
 
 [node name="CodeNode" type="PanelContainer" unique_id=1634294937 node_paths=PackedStringArray("NodeItemContainer")]
