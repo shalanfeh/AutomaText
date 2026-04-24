@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dno4iwdrkcg8r" path="res://NodeManager/Line/line_container.tscn" id="1_cqyio"]
 [ext_resource type="Theme" uid="uid://bd7wnan43y5uf" path="res://Assets/Themes/NodeTheme.tres" id="3_4k564"]
 
-[node name="CenterContainer" type="CenterContainer" unique_id=1946187160 node_paths=PackedStringArray("HBox", "LineUI", "EndingHolderUI")]
+[node name="CenterContainer" type="CenterContainer" unique_id=1946187160 node_paths=PackedStringArray("HBox", "LineUI", "EndingHolderUI", "LeafName")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -13,27 +13,39 @@ offset_right = 110.0
 offset_bottom = -254.0
 grow_vertical = 2
 script = ExtResource("1_4k564")
-HBox = NodePath("LeafContainer/MarginContainer/HBoxContainer")
-LineUI = NodePath("LeafContainer/MarginContainer/HBoxContainer/LineContainer")
-EndingHolderUI = NodePath("LeafContainer/MarginContainer/HBoxContainer/CenterContainer")
+HBox = NodePath("VBoxContainer/LeafContainer/MarginContainer/HBoxContainer")
+LineUI = NodePath("VBoxContainer/LeafContainer/MarginContainer/HBoxContainer/LineContainer")
+EndingHolderUI = NodePath("VBoxContainer/LeafContainer/MarginContainer/HBoxContainer/CenterContainer")
+LeafName = NodePath("VBoxContainer/Label")
 
-[node name="LeafContainer" type="PanelContainer" parent="." unique_id=2100856745]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=976036436]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LeafContainer" unique_id=1160116355]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1597006375]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.165)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_font_sizes/font_size = 25
+text = "Test"
+
+[node name="LeafContainer" type="PanelContainer" parent="VBoxContainer" unique_id=2100856745]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/LeafContainer" unique_id=1160116355]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LeafContainer/MarginContainer" unique_id=246738248]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/LeafContainer/MarginContainer" unique_id=246738248]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="LineContainer" parent="LeafContainer/MarginContainer/HBoxContainer" unique_id=14589049 instance=ExtResource("1_cqyio")]
+[node name="LineContainer" parent="VBoxContainer/LeafContainer/MarginContainer/HBoxContainer" unique_id=14589049 instance=ExtResource("1_cqyio")]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="LeafContainer/MarginContainer/HBoxContainer" unique_id=706733772]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/LeafContainer/MarginContainer/HBoxContainer" unique_id=706733772]
 layout_mode = 2
 theme = ExtResource("3_4k564")

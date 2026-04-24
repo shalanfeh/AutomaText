@@ -13,7 +13,7 @@ func GetParam(DictKey: String) -> Variant:
 	
 	#if it's connections MAKE IT TO AVOID CYCLYC CALLING
 	if DictKey == "Connections":
-		push_warning("Had to make connections to avoid circular calling in ", Name)
+		#push_warning("Had to make connections to avoid circular calling in ", Name)
 		Parameters["Connections"] = Connections.new(0, 0)
 	
 	#if not, get the generic one

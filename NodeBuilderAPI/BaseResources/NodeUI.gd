@@ -4,6 +4,9 @@ class_name NodeUI
 #LeftRight is for place logic. false = left, true = right
 signal DraggedOn(Caller: NodeUI, Dropped: NodeUI, LeftRight: bool)
 
+#Emitted when the node is dragged - Caller is self
+signal Dragged(Caller: NodeUI)
+
 #container that holds node items (labels, variable inputs, etc)
 @export var NodeItemContainer: Container = null
 
@@ -58,3 +61,20 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	
 	#emit the signal
 	DraggedOn.emit(self, data, LeftRight)
+
+func _get_drag_data(at_position: Vector2) -> NodeUI:
+	DragHandler.Dragging = true
+	
+	var NewNode: NodeUI = GenericNodeList.GenericList.get(SaveData.Name).Create(SaveData)
+	var NicerPreview: CenterContainer = CenterContainer.new()
+	NicerPreview.tree_exited.connect(func(): DragHandler.Dragging = false)
+	
+	NicerPreview.add_child(NewNode)
+	
+	set_drag_preview(NicerPreview)
+	
+	Dragged.emit(self)
+	
+	#Must create a new one here because the one used for the drag UI will be deleted
+	#according to the documentation for set_drag_preview
+	return GenericNodeList.GenericList.get(SaveData.Name).Create(SaveData)

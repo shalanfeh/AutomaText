@@ -1,31 +1,23 @@
 extends GenericCodeNode
 
-
 #Needs to take in an execution pointer object for updating
 #Context contains thread related variables and stack
 #SaveData contains the parameters and variable changed for this node
 func Run(Context: BotThread, Pointer: ExecutionPointer, SaveData: SavedCodeNode) -> void:
-	print("Ran 50/50 ending")
+	print("Ran OnStart Trigger")
 
 #takes in a savedNode to build the node with customized parameters
 func Create(Modifications: SavedCodeNode = null) -> NodeUI:
 	var CreatedNode: NodeUI = NodeBuilderAPI.NewNode(Modifications)
 	CreatedNode.SaveData.Name = Name
 	
-	if !(CreatedNode.SaveData.Parameters.has("Connections")):
-		CreatedNode.SaveData.Parameters["Connections"] = Connections.new(1, 1)
-		var Conn: Connections = CreatedNode.SaveData.GetParam("Connections")
-		Conn.UpperNames[0] = "Scenario A"
-		Conn.LowerNames[0] = "Scenario B"
-	
 	var Title: Label = NodeBuilderAPI.InsertTitle(CreatedNode)
-	Title.text = "50/50 Randomizer"
-	
+	Title.text = "On Start"
 	
 	return CreatedNode
 
 func _init() -> void:
-	Name = "RandomizedEnding"
-	Category = Categories.ENDING
+	Name = "OnStartTrigger"
+	Category = Categories.TRIGGER
 	
 	super()

@@ -4,6 +4,7 @@ class_name SequenceUI
 @export var DataHolder: SequenceData
 @export var LeafScene: PackedScene = preload("uid://dno4iwdrkcg8r")
 @export var TriggerNodeHolder: CenterContainer
+@export var LineManager: LinePool
 
 var TriggerNodeUI: NodeUI
 
@@ -21,26 +22,83 @@ func _ready() -> void:
 	
 	#trigger Node 
 	if DataHolder.TriggerNode == null:
-		 #case where trigger node doesn't exist 
-		var TempGenericCode: GenericCodeNode = GenericNodeList.GenericList.get("PlaceHolderTrigger")
-		if TempGenericCode == null:
-			push_error("Couldn't find ", TempGenericCode.Name, " in GenericList")
-			return
-		TriggerNodeUI = TempGenericCode.Create(null)
+		CreateTriggerPlaceholder()
 	else:
 		#case where trigger node exists 
 		var TempGenericCode: GenericCodeNode = GenericNodeList.GenericList.get(DataHolder.TriggerNode.Name)
 		if TempGenericCode == null:
 			push_error("Couldn't find ", TempGenericCode.Name, " in GenericList")
 			return
-		TriggerNodeUI = TempGenericCode.Create(DataHolder.TriggerNode)
+		SetTrigger(TempGenericCode.Create(DataHolder.TriggerNode))
 	
 	#Leafs 
 	for ID: int in DataHolder.LeafDict:
 		CreateLeafScene(ID)
 	
+	LeafUI[1].LeafName.text = "Default"
+	
 	BuildTree()
 
+#WHEN SET IS COMPLETE, MAKE _ready AND CreateTriggerPlaceholder USE IT
+
+#create placeholder trigger
+func CreateTriggerPlaceholder() -> void:
+	#check if trigger doesn't exist
+	if DataHolder.TriggerNode == null:
+		 #case where trigger node doesn't exist 
+		var TempGenericCode: GenericCodeNode = GenericNodeList.GenericList.get("PlaceHolderTrigger")
+		if TempGenericCode == null:
+			push_error("Couldn't find ", TempGenericCode.Name, " in GenericList")
+			return
+		SetTrigger(TempGenericCode.Create(null))
+
+#set trigger
+func SetTrigger(NewTrigger: NodeUI) -> void:
+	#add trigger to UI and data
+	TriggerNodeUI = NewTrigger
+	TriggerNodeHolder.add_child(TriggerNodeUI)
+	
+	DataHolder.SetTriggerNode(NewTrigger.SaveData)
+	
+	#connect dragged and dragOn signals
+	TriggerNodeUI.Dragged.connect(TriggerDragged)
+	TriggerNodeUI.DraggedOn.connect(TriggerDraggedOn)
+
+#remove trigger
+func RemoveTrigger() -> void:
+	#Disconnect signals
+	TriggerNodeUI.Dragged.disconnect(TriggerDragged)
+	TriggerNodeUI.DraggedOn.disconnect(TriggerDraggedOn)
+	
+	#delete trigger from ui
+	TriggerNodeUI.queue_free()
+	TriggerNodeUI = null
+	
+	#delete trigger from data
+	DataHolder.TriggerNode = null
+
+
+#trigger dragged
+func TriggerDragged(Caller: NodeUI) -> void:
+	#remove trigger + create placeholder
+	RemoveTrigger()
+	CreateTriggerPlaceholder()
+	
+	await get_tree().process_frame
+	TriggerNodeHolder.size = Vector2(0,0)
+	
+	BuildTree()
+
+#trigger dragOn
+func TriggerDraggedOn(Caller: NodeUI, Dropped: NodeUI, _LR: bool) -> void:
+	#remove trigger + set trigger
+	RemoveTrigger()
+	SetTrigger(Dropped)
+	
+	await get_tree().process_frame
+	TriggerNodeHolder.size = Vector2(0,0)
+	
+	BuildTree()
 
 # --- Layout Algorithm ---
 
@@ -226,7 +284,14 @@ func BuildTree() -> void:
 			#print("ID:", id, " pos:", pos, " size:", leaf.size, " top:", pos.y - leaf.size.y/2.0, " bottom:", pos.y + leaf.size.y/2.0, " extents:", extents)
 	#
 	_apply_positions(positions)
+	
+	TriggerNodeHolder.global_position = Vector2(
+		positions[1].x - TriggerNodeUI.size.x - 30,
+		positions[1].y - (TriggerNodeUI.size.y/2) + LeafUI[1].LeafName.size.y/2)
 
+#goes through connections and sets leaf names and connects them via line
+func ConnectLeafs() -> void:
+	pass
 
 # --- Leaf creation ---
 
@@ -262,7 +327,7 @@ func LeafPropagator(Connector: Connections) -> void:
 			Connector.Upper[idx] = NewID
 			
 			#load the new leaf in data
-			CreateLeafScene(NewID)
+			CreateLeafScene(NewID).LeafName.text = Connector.UpperNames[idx]
 	
 	for idx: int in range(Connector.Lower.size()):
 		if Connector.Lower[idx] == -1:
@@ -270,4 +335,4 @@ func LeafPropagator(Connector: Connections) -> void:
 			Connector.Lower[idx] = NewID
 			
 			#load the new leaf in data
-			CreateLeafScene(NewID)
+			CreateLeafScene(NewID).LeafName.text = Connector.LowerNames[idx]

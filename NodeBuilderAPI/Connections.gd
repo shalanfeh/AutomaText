@@ -4,18 +4,27 @@ class_name Connections
 var Upper: Array[int] = []
 var Lower: Array[int] = []
 
+var UpperNames: Array[String] = []
+var LowerNames: Array[String] = []
+
 #How many possible connections.
 #Will show on tree
-var MaxUppper: int
+var MaxUpper: int
 var MaxLower: int
 
 #constructor
 func _init(UpperLimit: int, LowerLimit: int):
-	MaxUppper = UpperLimit
+	MaxUpper = UpperLimit
 	MaxLower = LowerLimit
 	
-	Upper.resize(MaxUppper)
+	Upper.resize(MaxUpper)
 	Lower.resize(MaxLower)
 	
 	Upper.fill(-1)
 	Lower.fill(-1)
+	
+	UpperNames.resize(MaxUpper)
+	LowerNames.resize(MaxLower)
+	
+	UpperNames.fill("Default")
+	LowerNames.fill("Default")

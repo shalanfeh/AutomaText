@@ -1,6 +1,8 @@
 extends PanelContainer
 class_name LineContainer
 
+signal RequestTreeRebuild
+
 #the array is the children of the HBoxContainer
 @export var HContainer: HBoxContainer
 
@@ -8,12 +10,15 @@ var DataHolder: LineData
 
 func _ready() -> void:
 	if DataHolder == null or DataHolder.NodeSaveList.size() == 0:
-		var Generic: GenericCodeNode = GenericNodeList.GenericList.get("PlaceholderCode")
-		if Generic:
-			var Placeholder: NodeUI = Generic.Create(null)
-			InsertChild(Placeholder)
-		else:
-			push_error("Could not find generic ", "PlaceholderCode")
+		CreatePlaceholder()
+
+func CreatePlaceholder() -> void:
+	var Generic: GenericCodeNode = GenericNodeList.GenericList.get("PlaceholderCode")
+	if Generic:
+		var Placeholder: NodeUI = Generic.Create(null)
+		InsertChild(Placeholder)
+	else:
+		push_error("Could not find generic ", "PlaceholderCode")
 
 #Used to resize self. Child containers resize themselves, 
 #But because LineContainer is the root, must be handled manually
@@ -56,6 +61,18 @@ func InsertChild(Child: NodeUI, index: int = -1) -> void:
 	
 	#connect to DragOn signal
 	Child.DraggedOn.connect(DragRouter)
+	#connect to dragged signal
+	Child.Dragged.connect(ChildDragged)
+
+func ChildDragged(Caller: NodeUI):
+	#remove dragged from data and ui
+	ExtractNode(Caller)
+	
+	#Insert placeholder if need be
+	if DataHolder.NodeSaveList.size() == 0:
+		CreatePlaceholder()
+	
+	RequestTreeRebuild.emit()
 
 #converts LineData into a full lineUI. Assumes LineContainer is empty!
 func DataToUi() -> void:
@@ -65,6 +82,7 @@ func DataToUi() -> void:
 #Remove a NodeUI (and corresponding data) from the line
 func ExtractNode(Target: NodeUI) -> void:
 	Target.DraggedOn.disconnect(DragRouter)
+	Target.Dragged.disconnect(ChildDragged)
 	
 	var CContainer: CenterContainer = Target.get_parent()
 	HContainer.remove_child(CContainer) 
@@ -84,9 +102,13 @@ func DragRouter(Caller: NodeUI, Dropped: NodeUI, LeftRight: bool):
 	
 	if Generic.GetDragOnBehavior() == Generic.DragOnBehaviors.PLACE:
 		DragPlace(Caller, Dropped, LeftRight)
+		RequestTreeRebuild.emit()
 		return
 	
 	DragReplace(Caller, Dropped)
+	
+	#rebuild the tree
+	RequestTreeRebuild.emit() 
 
 
 func DragPlace(Caller: NodeUI, Dropped: NodeUI, LeftRight: bool):

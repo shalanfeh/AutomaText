@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="3_wicfy"]
 [ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="4_go42g"]
 [ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="5_sreuk"]
+[ext_resource type="Script" uid="uid://ofpo8vrrhq8r" path="res://NodeManager/Lines/LinePool.gd" id="6_tq6uv"]
 
 [node name="Control" type="Control" unique_id=929101201]
 layout_mode = 3
@@ -48,7 +49,11 @@ layout_mode = 0
 offset_top = -20.0
 offset_bottom = 20.0
 
-[node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder")]
+[node name="Control" type="Node2D" parent="." unique_id=268090768 node_paths=PackedStringArray("TriggerNodeHolder", "LineManager")]
 script = ExtResource("1_cguwc")
 LeafScene = ExtResource("2_cguwc")
 TriggerNodeHolder = NodePath("../CenterContainer")
+LineManager = NodePath("../LineManager")
+
+[node name="LineManager" type="Node" parent="." unique_id=1421413993]
+script = ExtResource("6_tq6uv")

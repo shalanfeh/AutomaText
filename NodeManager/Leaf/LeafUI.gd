@@ -8,6 +8,7 @@ signal RequestTreeRebuild
 @export var HBox: HBoxContainer
 @export var LineUI:  LineContainer
 @export var EndingHolderUI: CenterContainer
+@export var LeafName: Label
 
 var EndingUI: NodeUI: set = SetEndingUI
 
@@ -16,20 +17,27 @@ var EndingUI: NodeUI: set = SetEndingUI
 func _ready() -> void:
 	if DataHolder == null:
 		DataHolder = LeafData.new()
+	LineUI.RequestTreeRebuild.connect(OnLineRequest)
 
+func OnLineRequest() -> void:
+	RequestTreeRebuild.emit() 
+	Resize()
 
 #Used to resize self. Child containers resize themselves, 
 #But because LineContainer is the root, must be handled manually
 func Resize() -> void:
 	size = Vector2(0,0)
+	LeafName.position = Vector2(0, 0)
 
 #for updating the drag signal
 func SetEndingUI(value: NodeUI) -> void:
 	if EndingUI != null:
 		EndingUI.DraggedOn.disconnect(EndingDraggedOn)
+		EndingUI.Dragged.disconnect(EndingDragged)
 	
 	if value != null:
 		value.DraggedOn.connect(EndingDraggedOn)
+		value.Dragged.connect(EndingDragged)
 	
 	EndingUI = value
 
@@ -46,6 +54,8 @@ func CreatePlaceholderEnding() -> bool:
 	EndingUI = TempGenericCode.Create(null)
 	EndingHolderUI.add_child(EndingUI)
 	Resize()
+	
+	DataHolder.EndingNode = EndingUI.SaveData
 	return true
 
 #given just saveNodeData, updates data and UI - used in LoadFromData
@@ -68,7 +78,7 @@ func NewEndingNodeData(SaveData: SavedCodeNode) -> bool:
 		EndingUI.queue_free()
 	
 	#create ending UI
-	EndingUI = TempGenericCode.Create(DataHolder.EndingNode)
+	EndingUI = TempGenericCode.Create(SaveData)
 	EndingHolderUI.add_child(EndingUI)
 	Resize()
 	
@@ -107,6 +117,16 @@ func LoadFromData():
 
 func EndingDraggedOn(Caller: NodeUI, Dropped: NodeUI, _LR: bool) -> void:
 	NewEndingNode(Dropped)
+
+func EndingDragged(Caller: NodeUI) -> void:
+	EndingHolderUI.remove_child(EndingUI)
+	EndingUI.queue_free()
+	
+	EndingUI = null
+	
+	CreatePlaceholderEnding()
+	
+	RequestTreeRebuild.emit()
 
 #--- postponed until testing is possible ---
 #handle the setting of the ending node through UI interaction
