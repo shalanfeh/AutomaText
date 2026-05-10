@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AutomaText"
-run/main_scene="uid://dfhg0beibsxox"
+run/main_scene="uid://c1mx4n0isq5ah"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://Archive/icon.svg"
 
@@ -20,6 +20,8 @@ config/icon="res://Archive/icon.svg"
 NodeBuilderAPI="*uid://s182awosbvlh"
 GenericNodeList="*uid://v074du426cfc"
 DragHandler="*uid://dr4x6tc13sndo"
+BotGlobal="*uid://dm83xjsq43t3e"
+EventBus="*uid://cnga3pvx5fff0"
 
 [dotnet]
 

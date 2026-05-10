@@ -19,5 +19,5 @@ func Pop(Sequence: String) -> void:
 
 #presumed run function
 #pops a sequence off the stack when 
-#	executionpointer points to (null, 0) or something
+#executionpointer points to (null, 0) or something
 #Pushes a sequence to the stack when node.run returns a string

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://2ofas6kyahm6"]
+
+[ext_resource type="PackedScene" uid="uid://diimwnfkjtlme" path="res://UI/InputEntry.tscn" id="1_ck220"]
+[ext_resource type="Script" uid="uid://dmd2e1iingc4f" path="res://UI/SSPopUp.gd" id="1_tec44"]
+
+[node name="SSPopUp" type="PanelContainer" unique_id=779591899 node_paths=PackedStringArray("EntryInput", "DeleteButton")]
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -751.0
+offset_bottom = -482.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tec44")
+EntryInput = NodePath("VBoxContainer/InputEntry")
+DeleteButton = NodePath("VBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2102036333]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1154714883]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Sequence Settings"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=2103779257]
+layout_mode = 2
+text = "Rename Sequence"
+
+[node name="InputEntry" parent="VBoxContainer" unique_id=1932304995 instance=ExtResource("1_ck220")]
+layout_mode = 2
+State = 1
+Target = 0
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=909380813]
+layout_mode = 2
+text = "Delete Sequence"

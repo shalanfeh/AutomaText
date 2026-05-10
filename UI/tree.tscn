@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://6ddi2ub3y4vd" path="res://UI/NodeMenu.gd" id="1_brfkd"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4vi0"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
 [node name="Tree" type="Tree" unique_id=562116176]
 offset_right = 530.0
 offset_bottom = 272.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4vi0")
 hide_root = true
 script = ExtResource("1_brfkd")

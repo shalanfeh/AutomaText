@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://dpxaa4wckxhru"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4drb"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.37800002)
+LineEdit/colors/selection_color = Color(0.2123048, 0.21230483, 0.21230477, 1)
+LineEdit/styles/normal = SubResource("StyleBoxFlat_m4drb")

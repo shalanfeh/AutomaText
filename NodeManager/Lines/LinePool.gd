@@ -33,6 +33,6 @@ func RequestLine(pA: Vector2, pB: Vector2) -> void:
 	Lines[TakenLine].SetPoints(pA, pB)
 
 func ClearLines() -> void:
-	for idx in Lines:
-		Lines[idx].Clear()
+	for line in Lines:
+		line.Clear()
 	Pointer = 0

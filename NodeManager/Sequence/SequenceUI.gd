@@ -16,10 +16,18 @@ var HorizontalSpacing: int = 25
 var NodeGap: float = 20.0
 
 #create UI elements from data and place them in dictionary/variables 
-func _ready() -> void:
-	if DataHolder == null:
-		DataHolder = SequenceData.new()
+func SetUp(SeqName: String) -> void:
+	#== ready the environment ==
+	if DataHolder != null:
+		Clear()
 	
+	if BotGlobal.DataHolder.Sequences.get(SeqName) == null:
+		push_warning("Could not find sequence with name: ", SeqName)
+		return
+	
+	DataHolder = BotGlobal.DataHolder.Sequences.get(SeqName)
+	
+	#== Set the scene ==
 	#trigger Node 
 	if DataHolder.TriggerNode == null:
 		CreateTriggerPlaceholder()
@@ -36,10 +44,19 @@ func _ready() -> void:
 		CreateLeafScene(ID)
 	
 	LeafUI[1].LeafName.text = "Default"
-	
 	BuildTree()
 
-#WHEN SET IS COMPLETE, MAKE _ready AND CreateTriggerPlaceholder USE IT
+#cleans sequenceUI to display a different sequence
+func Clear() -> void:
+	DataHolder = null
+	
+	TriggerNodeUI.queue_free()
+	
+	for leaf in LeafUI:
+		LeafUI[leaf].queue_free()
+	LeafUI.clear()
+	
+	LineManager.ClearLines()
 
 #create placeholder trigger
 func CreateTriggerPlaceholder() -> void:
@@ -288,9 +305,30 @@ func BuildTree() -> void:
 	TriggerNodeHolder.global_position = Vector2(
 		positions[1].x - TriggerNodeUI.size.x - 30,
 		positions[1].y - (TriggerNodeUI.size.y/2) + LeafUI[1].LeafName.size.y/2)
+	
+	LineManager.ClearLines()
+	ConnectLeafs(1, positions)
 
 #goes through connections and sets leaf names and connects them via line
-func ConnectLeafs() -> void:
+func ConnectLeafs(leaf: int, LeafPositions: Dictionary) -> void:
+	#given leaf
+	#update titles for connections
+	#draw lines to connections
+	var Connector: Connections = LeafUI[leaf].DataHolder.EndingNode.GetParam("Connections")
+	if Connector == null:
+		return
+	
+	for upper in Connector.Upper:
+		LineManager.RequestLine(LeafPositions[leaf] + Vector2(LeafUI[leaf].size.x/2, 0), LeafPositions[upper])
+		LeafUI[upper].LeafName.text = Connector.UpperNames[Connector.Upper.find(upper)]
+		ConnectLeafs(upper, LeafPositions)
+	
+	for lower in Connector.Lower:
+		LineManager.RequestLine(LeafPositions[leaf] + Vector2(LeafUI[leaf].size.x/2, 0), LeafPositions[lower])
+		LeafUI[lower].LeafName.text = Connector.LowerNames[Connector.Lower.find(lower)]
+		ConnectLeafs(lower, LeafPositions)
+	
+	#call function for each connection again
 	pass
 
 # --- Leaf creation ---
@@ -327,7 +365,8 @@ func LeafPropagator(Connector: Connections) -> void:
 			Connector.Upper[idx] = NewID
 			
 			#load the new leaf in data
-			CreateLeafScene(NewID).LeafName.text = Connector.UpperNames[idx]
+			CreateLeafScene(NewID)
+			#CreateLeafScene(NewID).LeafName.text = Connector.UpperNames[idx]
 	
 	for idx: int in range(Connector.Lower.size()):
 		if Connector.Lower[idx] == -1:
@@ -335,4 +374,5 @@ func LeafPropagator(Connector: Connections) -> void:
 			Connector.Lower[idx] = NewID
 			
 			#load the new leaf in data
-			CreateLeafScene(NewID).LeafName.text = Connector.LowerNames[idx]
+			CreateLeafScene(NewID)
+			#CreateLeafScene(NewID).LeafName.text = Connector.LowerNames[idx]

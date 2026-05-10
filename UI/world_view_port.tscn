@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dvgu4li0xradx"]
+
+[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="1_tienf"]
+[ext_resource type="Script" uid="uid://c68kpr3ptllda" path="res://UI/world_view_port.gd" id="1_uiojn"]
+[ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="2_uryu6"]
+[ext_resource type="Script" uid="uid://b0gdg1n7c0isl" path="res://NodeManager/Sequence/SequenceUI.gd" id="3_uryu6"]
+[ext_resource type="Script" uid="uid://ofpo8vrrhq8r" path="res://NodeManager/Lines/LinePool.gd" id="4_cw8lp"]
+[ext_resource type="PackedScene" uid="uid://ck2ly36utex3" path="res://NodeManager/Leaf/leaf_container.tscn" id="5_66uko"]
+
+[node name="WorldViewPort" type="SubViewport" unique_id=749828381 node_paths=PackedStringArray("Camera", "SeqContainer")]
+handle_input_locally = false
+size = Vector2i(940, 565)
+render_target_update_mode = 4
+script = ExtResource("1_uiojn")
+Camera = NodePath("PanningCamera2D")
+SeqContainer = NodePath("SequenceContainer")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1175206820]
+show_behind_parent = true
+z_index = -100
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -2000.0
+offset_top = -45000.0
+offset_right = 88000.0
+offset_bottom = 45000.0
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+texture = ExtResource("1_tienf")
+stretch_mode = 1
+
+[node name="PanningCamera2D" type="Camera2D" parent="." unique_id=185536837]
+limit_left = -1000
+limit_top = -40000
+limit_right = 85000
+limit_bottom = 40000
+position_smoothing_speed = 30.0
+script = ExtResource("2_uryu6")
+metadata/_custom_type_script = "uid://byqbhm2erodr3"
+
+[node name="SequenceContainer" type="Control" parent="." unique_id=259745862 node_paths=PackedStringArray("TriggerNodeHolder", "LineManager")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_uryu6")
+LeafScene = ExtResource("5_66uko")
+TriggerNodeHolder = NodePath("../CenterContainer")
+LineManager = NodePath("../LineManager")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1184059253]
+offset_top = -20.0
+offset_bottom = 20.0
+
+[node name="LineManager" type="Node" parent="." unique_id=2012623599]
+script = ExtResource("4_cw8lp")

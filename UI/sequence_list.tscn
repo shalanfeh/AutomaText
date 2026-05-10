@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bxekktn5nkbjv"]
+
+[ext_resource type="Script" uid="uid://djclm81eeykx1" path="res://UI/sequence_list.gd" id="1_f7ati"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcrug"]
+bg_color = Color(0, 0, 0, 0.47500002)
+
+[node name="SequenceList" type="ScrollContainer" unique_id=96255185 node_paths=PackedStringArray("ChildHolder")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rcrug")
+script = ExtResource("1_f7ati")
+ChildHolder = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1410160217]
+layout_mode = 2
+size_flags_horizontal = 3

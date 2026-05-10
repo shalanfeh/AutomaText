@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d3ohd6xceon41"]
+
+[ext_resource type="Script" uid="uid://d3ahfre0jt37u" path="res://UI/sequence_button.gd" id="1_k0cic"]
+[ext_resource type="PackedScene" uid="uid://2ofas6kyahm6" path="res://UI/SequenceSettingsPopUp.tscn" id="2_udypo"]
+
+[node name="SequenceButton" type="HBoxContainer" unique_id=661906361 node_paths=PackedStringArray("MainButton", "SideButton", "PopUp")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_k0cic")
+MainButton = NodePath("SequenceName")
+SideButton = NodePath("Button")
+PopUp = NodePath("Button/SSPopUp")
+
+[node name="SequenceName" type="Button" parent="." unique_id=2062204907]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+
+[node name="Button" type="Button" parent="." unique_id=647162450]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = true
+text = "..."
+
+[node name="SSPopUp" parent="Button" unique_id=779591899 instance=ExtResource("2_udypo")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -75.0
+offset_right = 148.0
+offset_bottom = 75.0

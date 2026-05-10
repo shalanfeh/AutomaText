@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cvjeh4nks7rrm"]
+
+[ext_resource type="Texture2D" uid="uid://xn77jnhfqe8v" path="res://Assets/Images/AddSequence.svg" id="1_8chkk"]
+[ext_resource type="Script" uid="uid://cpmcypl3gvp1j" path="res://upper_bar.gd" id="1_32iqm"]
+[ext_resource type="Texture2D" uid="uid://bnnun7pvk7t3p" path="res://Assets/Images/PlayArrow.svg" id="1_mnx3j"]
+[ext_resource type="Texture2D" uid="uid://cgjx3mjwrbcts" path="res://Assets/Images/PlayArrowHover.svg" id="2_7lqqm"]
+[ext_resource type="Texture2D" uid="uid://bbrakr0uvj8b5" path="res://Assets/Images/AddSequenceSelect.svg" id="2_32iqm"]
+[ext_resource type="Texture2D" uid="uid://bqcuxb1gbehom" path="res://Assets/Images/PlayArrowClick.svg" id="2_t2xav"]
+[ext_resource type="Texture2D" uid="uid://bwko36ov5fp27" path="res://Assets/Images/AddSequenceHover.svg" id="3_qor8c"]
+
+[node name="Control" type="HSplitContainer" unique_id=405624578 node_paths=PackedStringArray("TabHolder", "HomeButton", "PlayButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(136)
+dragging_enabled = false
+split_offset = 136
+script = ExtResource("1_32iqm")
+TabHolder = NodePath("TabBar")
+HomeButton = NodePath("HBoxContainer/AddButton")
+PlayButton = NodePath("HBoxContainer/PlayButton")
+
+[node name="TabBar" type="TabBar" parent="." unique_id=142565687]
+layout_mode = 2
+tab_close_display_policy = 2
+deselect_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1268200951]
+layout_mode = 2
+
+[node name="AddButton" type="TextureButton" parent="HBoxContainer" unique_id=1356615448]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture_normal = ExtResource("1_8chkk")
+texture_pressed = ExtResource("2_32iqm")
+texture_hover = ExtResource("3_qor8c")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="PlayButton" type="TextureButton" parent="HBoxContainer" unique_id=418835078]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+texture_normal = ExtResource("1_mnx3j")
+texture_pressed = ExtResource("2_t2xav")
+texture_hover = ExtResource("2_7lqqm")
+ignore_texture_size = true
+stretch_mode = 4

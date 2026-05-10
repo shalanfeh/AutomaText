@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://ck2ly36utex3" path="res://NodeManager/Leaf/leaf_container.tscn" id="2_cguwc"]
 [ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="3_wicfy"]
 [ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="4_go42g"]
-[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="5_sreuk"]
 [ext_resource type="Script" uid="uid://ofpo8vrrhq8r" path="res://NodeManager/Lines/LinePool.gd" id="6_tq6uv"]
 
-[node name="Control" type="Control" unique_id=929101201]
+[node name="World" type="Control" unique_id=929101201]
 layout_mode = 3
 anchors_preset = 0
 
@@ -37,13 +36,6 @@ mouse_behavior_recursive = 1
 texture = ExtResource("4_go42g")
 stretch_mode = 1
 
-[node name="Tree" parent="." unique_id=562116176 instance=ExtResource("5_sreuk")]
-layout_mode = 0
-offset_left = 260.0
-offset_top = -482.0
-offset_right = 790.0
-offset_bottom = -210.0
-
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1785580854]
 layout_mode = 0
 offset_top = -20.0
@@ -57,3 +49,10 @@ LineManager = NodePath("../LineManager")
 
 [node name="LineManager" type="Node" parent="." unique_id=1421413993]
 script = ExtResource("6_tq6uv")
+
+[node name="Control2" type="Control" parent="." unique_id=570089137 node_paths=PackedStringArray("TriggerNodeHolder", "LineManager")]
+anchors_preset = 0
+script = ExtResource("1_cguwc")
+LeafScene = ExtResource("2_cguwc")
+TriggerNodeHolder = NodePath("../CenterContainer")
+LineManager = NodePath("../LineManager")

@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b0hw3jekod6fr"]
+
+[ext_resource type="Texture2D" uid="uid://cp4rbrrrdqtjp" path="res://Assets/Images/DarkBiggerChecker2.png" id="1_w7jxc"]
+[ext_resource type="PackedScene" uid="uid://byte06meyfrnn" path="res://UI/AddSequence.tscn" id="2_22i4j"]
+[ext_resource type="Script" uid="uid://o2r2v5k3cvbn" path="res://empty_selection_screen.gd" id="2_jp5xv"]
+[ext_resource type="PackedScene" uid="uid://bxekktn5nkbjv" path="res://UI/sequence_list.tscn" id="3_1xiex"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_22i4j"]
+texture = ExtResource("1_w7jxc")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.38738903, 0.38738897, 0.38738897, 1)
+
+[node name="HomeMenuPanel" type="Panel" unique_id=1698126089]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_22i4j")
+script = ExtResource("2_jp5xv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1982391446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer" unique_id=2195055]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[b]AutomaText"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=182393813]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1241542644]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Import" type="Button" parent="VBoxContainer/HBoxContainer/Left" unique_id=1679083731]
+layout_mode = 2
+text = "Import"
+
+[node name="Export" type="Button" parent="VBoxContainer/HBoxContainer/Left" unique_id=512258970]
+layout_mode = 2
+text = "Export"
+
+[node name="Middle" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=665302300]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="Control" parent="VBoxContainer/HBoxContainer/Middle" unique_id=1534731660 instance=ExtResource("2_22i4j")]
+layout_mode = 2
+
+[node name="Right" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=1356032903]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Right" unique_id=1096814574]
+layout_mode = 2
+text = "Sequences"
+
+[node name="SequenceList" parent="VBoxContainer/HBoxContainer/Right" unique_id=96255185 instance=ExtResource("3_1xiex")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=676196305]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.01
+color = Color(1, 1, 1, 0)

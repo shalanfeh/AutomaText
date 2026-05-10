@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c1mx4n0isq5ah"]
+
+[ext_resource type="PackedScene" uid="uid://cvjeh4nks7rrm" path="res://UpperBar.tscn" id="1_j4ict"]
+[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="1_vfs0v"]
+[ext_resource type="PackedScene" uid="uid://dvgu4li0xradx" path="res://UI/world_view_port.tscn" id="3_j4ict"]
+[ext_resource type="PackedScene" uid="uid://b0hw3jekod6fr" path="res://EmptySelectionScreen.tscn" id="5_hl57p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl57p"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4ict"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="Control" type="CanvasLayer" unique_id=310626082]
+
+[node name="VSplitContainer" type="VSplitContainer" parent="." unique_id=1529402796]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+theme_override_constants/minimum_grab_thickness = 6
+theme_override_constants/autohide = 1
+theme_override_styles/split_bar_background = SubResource("StyleBoxFlat_hl57p")
+split_offsets = PackedInt32Array(75)
+split_offset = 75
+metadata/_edit_lock_ = true
+
+[node name="Control" parent="VSplitContainer" unique_id=1610185050 instance=ExtResource("1_j4ict")]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+split_offsets = PackedInt32Array(10000)
+split_offset = 10000
+metadata/_edit_lock_ = true
+
+[node name="LowerHalf" type="HSplitContainer" parent="VSplitContainer" unique_id=1051712929]
+layout_mode = 2
+split_offsets = PackedInt32Array(200)
+split_offset = 200
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/LowerHalf" unique_id=1584404881]
+layout_mode = 2
+
+[node name="Tree" parent="VSplitContainer/LowerHalf/PanelContainer" unique_id=562116176 instance=ExtResource("1_vfs0v")]
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="VSplitContainer/LowerHalf" unique_id=976287537]
+layout_mode = 2
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="VSplitContainer/LowerHalf/PanelContainer3" unique_id=1882419201]
+layout_mode = 2
+stretch = true
+
+[node name="WorldViewPort" parent="VSplitContainer/LowerHalf/PanelContainer3/ViewportContainer" unique_id=749828381 instance=ExtResource("3_j4ict")]
+
+[node name="EmptySelectionScreen" parent="VSplitContainer/LowerHalf/PanelContainer3" unique_id=1698126089 instance=ExtResource("5_hl57p")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1762350405]
+z_index = -10
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.99200004
+offset_bottom = 5.18396
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4ict")
+metadata/_edit_lock_ = true

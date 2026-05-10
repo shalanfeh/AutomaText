@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://diimwnfkjtlme"]
+
+[ext_resource type="Theme" uid="uid://dpxaa4wckxhru" path="res://UI/UI_Theme.tres" id="1_5wyer"]
+[ext_resource type="Script" uid="uid://q6csvj3dtq03" path="res://UI/InputEntry.gd" id="1_gjwhk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wyer"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="InputEntry" type="HBoxContainer" unique_id=1932304995 node_paths=PackedStringArray("EntryBar", "SubmitButton", "VarOptionButton")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5wyer")
+script = ExtResource("1_gjwhk")
+EntryBar = NodePath("LineEdit")
+SubmitButton = NodePath("Button")
+VarOptionButton = NodePath("OptionButton")
+Target = 1
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=202527585]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Sequence Name"
+
+[node name="OptionButton" type="OptionButton" parent="." unique_id=638114685]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+allow_reselect = true
+
+[node name="Button" type="Button" parent="." unique_id=1285006430]
+self_modulate = Color(1, 0.540047, 0.48635542, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5wyer")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5wyer")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5wyer")
+text = "+"
