@@ -302,6 +302,7 @@ func BuildTree() -> void:
 	#
 	_apply_positions(positions)
 	
+	TriggerNodeHolder.size = Vector2(0,0)
 	TriggerNodeHolder.global_position = Vector2(
 		positions[1].x - TriggerNodeUI.size.x - 30,
 		positions[1].y - (TriggerNodeUI.size.y/2) + LeafUI[1].LeafName.size.y/2)

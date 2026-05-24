@@ -27,3 +27,12 @@ func SetEndingNode(NewNode: SavedCodeNode) -> bool:
 
 func _init() -> void:
 	LineNodes = LineData.new()
+
+func GetNodeFromIndex(idx: int) -> SavedCodeNode:
+	if idx >= 0 and idx < LineNodes.NodeSaveList.size():
+		return LineNodes.NodeSaveList[idx]
+	
+	if idx == LineNodes.NodeSaveList.size():
+		return EndingNode
+	
+	return null

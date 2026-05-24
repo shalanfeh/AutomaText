@@ -124,6 +124,41 @@ func Export() -> void:
 
 #=== helper functions ===
 
+func PrintContents() -> void:
+	print(ForgeJSONGD.class_to_json_string(DataHolder))
+	print("==============")
+	
+	print("~~ Variables ~~ ")
+	for Variable: String in DataHolder.Variables:
+		print(Variable, ": ", DataHolder.Variables[Variable].Value, " - ", DataHolder.Variables[Variable].Type)
+	
+	print("\n\n~~ Sequences ~~ ")
+	for Sequence: String in DataHolder.Sequences:
+		print("-", Sequence)
+		
+		if DataHolder.Sequences[Sequence].TriggerNode == null:
+			print("--Trigger: null")
+		else:
+			print("--Trigger: ", DataHolder.Sequences[Sequence].TriggerNode.Name)
+		
+		print("--Leafs")
+		var Leafs: Dictionary[int, LeafData] = DataHolder.Sequences[Sequence].LeafDict
+		for Leaf: int in Leafs:
+			print("---", Leaf)
+			
+			if Leafs[Leaf].EndingNode == null:
+				print("----Ending: null")
+			else:
+				print("----Ending: ", Leafs[Leaf].EndingNode.Name)
+			
+			print("----LineData")
+			for SCN: SavedCodeNode in Leafs[Leaf].LineNodes.NodeSaveList:
+				print("-----Node: ", SCN.Name)
+		print("\n")
+	
+	print("==============")
+	pass
+
 #returns the default value for a given variable type
 func GetDefaultValue(VarType: VARTYPES) -> Variant:
 	match VarType:

@@ -9,6 +9,9 @@ class_name UpperBar
 var ExistingTabs: Array[String] = []
 
 func _ready() -> void:
+	#scheduler
+	PlayButton.pressed.connect(PlayButtonClicked)
+	
 	#home button
 	HomeButton.pressed.connect(HomeClicked)
 	
@@ -74,6 +77,16 @@ func HomeClicked() -> void:
 		EventBus.TabSelected.emit(ExistingTabs[TabHolder.current_tab])
 		return
 	EventBus.OpenHomeScreen.emit()
+
+func PlayButtonClicked() -> void:
+	if !Prg.Running:
+		Prg.CodeToRun = null
+		Prg.CurrentSession = null
+		ForgeJSONGD.store_json_file("user://Output.atj", ForgeJSONGD.class_to_json(BotGlobal.DataHolder))
+		Prg.CodeToRun = ForgeJSONGD.json_file_to_class(BotData, "user://Output.atj")
+		Prg.StartProgram()
+	else:
+		Prg.EndProgram()
 
 func OnRefresh() -> void:
 	ExistingTabs.clear()

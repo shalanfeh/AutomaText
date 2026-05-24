@@ -22,6 +22,10 @@ enum DragOnBehaviors {DEFAULT, PLACE, REPLACE}
 #takes in a savedNode to build the node with customized parameters
 @abstract func Create(Modifications: SavedCodeNode = null) -> NodeUI
 
+#fired by the program upon start
+func OnProgramStart(SeqName: String) -> void:
+	pass
+
 #Returns drag-on behavior. Required to handle default behavior
 func GetDragOnBehavior() -> DragOnBehaviors:
 	if DragOnOverride == DragOnBehaviors.DEFAULT:

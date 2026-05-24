@@ -9,14 +9,19 @@ signal RequestTreeRebuild
 var DataHolder: LineData
 
 func _ready() -> void:
-	if DataHolder == null or DataHolder.NodeSaveList.size() == 0:
+	if DataHolder == null:
+		DataHolder = LineData.new()
+		return
+	
+	if DataHolder.NodeSaveList.size() == 0:
 		CreatePlaceholder()
 
 func CreatePlaceholder() -> void:
 	var Generic: GenericCodeNode = GenericNodeList.GenericList.get("PlaceholderCode")
 	if Generic:
 		var Placeholder: NodeUI = Generic.Create(null)
-		InsertChild(Placeholder)
+		Insert(Placeholder.SaveData)
+		Placeholder.queue_free()
 	else:
 		push_error("Could not find generic ", "PlaceholderCode")
 
