@@ -86,7 +86,13 @@ func NewEndingNodeData(SaveData: SavedCodeNode) -> bool:
 	DataHolder.SetEndingNode(SaveData)
 	
 	#Request sequence to update the tree
-	RequestingLeafPropagation.emit(SaveData.GetParam("Connections"))
+	var Connector: Connections
+	var raw = SaveData.GetParam("Connections")
+	if typeof(raw) == 27: #dictionary, from import
+		Connector = Connections.from_dict(raw)
+	else:
+		Connector = raw
+	RequestingLeafPropagation.emit(Connector)
 	RequestTreeRebuild.emit()
 	return true
 

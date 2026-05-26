@@ -134,7 +134,13 @@ func _measure_extents(leaf_id: int) -> Vector2:
 	if leaf_data == null or leaf_data.EndingNode == null:
 		return Vector2(half_height, half_height)
 	
-	var connector: Connections = leaf_data.EndingNode.GetParam("Connections")
+	var connector: Connections
+	var raw = leaf_data.EndingNode.GetParam("Connections")
+	if typeof(raw) == 27: #dictionary, from import
+		connector = Connections.from_dict(raw)
+	else:
+		connector = raw
+	
 	if connector == null:
 		return Vector2(half_height, half_height)
 	
@@ -191,7 +197,13 @@ func _compute_positions(leaf_id: int, parent_right_x: float, center_y: float, po
 	if leaf_data == null or leaf_data.EndingNode == null:
 		return
 	
-	var connector: Connections = leaf_data.EndingNode.GetParam("Connections")
+	var connector: Connections
+	var raw = leaf_data.EndingNode.GetParam("Connections")
+	if typeof(raw) == 27: #dictionary, from import
+		connector = Connections.from_dict(raw)
+	else:
+		connector = raw
+
 	if connector == null:
 		return
 	
@@ -315,7 +327,13 @@ func ConnectLeafs(leaf: int, LeafPositions: Dictionary) -> void:
 	#given leaf
 	#update titles for connections
 	#draw lines to connections
-	var Connector: Connections = LeafUI[leaf].DataHolder.EndingNode.GetParam("Connections")
+	var Connector: Connections
+	var raw = LeafUI[leaf].DataHolder.EndingNode.GetParam("Connections")
+	if typeof(raw) == 27: #dictionary, from import
+		Connector = Connections.from_dict(raw)
+	else:
+		Connector = raw
+		
 	if Connector == null:
 		return
 	

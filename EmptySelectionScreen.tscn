@@ -11,7 +11,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 modulate_color = Color(0.38738903, 0.38738897, 0.38738897, 1)
 
-[node name="HomeMenuPanel" type="Panel" unique_id=1698126089]
+[node name="HomeMenuPanel" type="Panel" unique_id=1698126089 node_paths=PackedStringArray("ImportButton", "ExportButton", "ImportPopUp", "ExportPopUp")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,6 +19,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_22i4j")
 script = ExtResource("2_jp5xv")
+ImportButton = NodePath("VBoxContainer/HBoxContainer/Left/Import")
+ExportButton = NodePath("VBoxContainer/HBoxContainer/Left/Export")
+ImportPopUp = NodePath("ImportFile")
+ExportPopUp = NodePath("ExportFile")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1982391446]
 layout_mode = 1
@@ -79,3 +83,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.01
 color = Color(1, 1, 1, 0)
+
+[node name="ExportFile" type="FileDialog" parent="." unique_id=608537954]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(1152, 648)
+unresizable = true
+access = 2
+filters = PackedStringArray("*.atj")
+
+[node name="ImportFile" type="FileDialog" parent="." unique_id=2012276440]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+size = Vector2i(1152, 648)
+unresizable = true
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.atj")

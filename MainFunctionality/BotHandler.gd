@@ -113,13 +113,21 @@ func RenameSequence(SeqName: String, NewSeqName: String) -> void:
 
 
 #=== JSON Handling ===
-func Import() -> void:
+func Import(FilePath: String) -> void:
 	Refresh.emit()
-	pass
+	
+	var ImportedData: BotData = ForgeJSONGD.json_file_to_class(BotData, FilePath)
+	if ImportedData:
+		DataHolder = ImportedData
+	else:
+		push_error("Failed to import data")
+	
+	Refresh.emit()
 
-func Export() -> void:
-	Refresh.emit()
-	pass
+func Export(FilePath: String) -> void:
+	var Success: bool = ForgeJSONGD.store_json_file(FilePath, ForgeJSONGD.class_to_json(DataHolder))
+	if !Success:
+		push_error("Failed to import data")
 
 
 #=== helper functions ===
