@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://0iqyd0bgaem6"]
+
+[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="1_k2go7"]
+[ext_resource type="PackedScene" uid="uid://bbd4pxjq0dhjh" path="res://variables.tscn" id="2_jaxsw"]
+
+[node name="PanelContainer" type="TabContainer" unique_id=574425136]
+offset_right = 235.0
+offset_bottom = 321.0
+current_tab = 0
+
+[node name="Nodes" parent="." unique_id=562116176 instance=ExtResource("1_k2go7")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Variables" parent="." unique_id=356197098 instance=ExtResource("2_jaxsw")]
+layout_mode = 2

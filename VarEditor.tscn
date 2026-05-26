@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bgb6rs5351fpx"]
+
+[ext_resource type="Script" uid="uid://b3yvwy310lcm" path="res://VarEditor.gd" id="1_cg8i2"]
+
+[node name="Panel" type="HBoxContainer" unique_id=1906541962 node_paths=PackedStringArray("TypeLabel", "TextEntry", "NumberEntry", "BoolEntry")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_cg8i2")
+TypeLabel = NodePath("VarTypeLabel")
+TextEntry = NodePath("LineEdit")
+NumberEntry = NodePath("SpinBox")
+BoolEntry = NodePath("CheckButton")
+
+[node name="VarTypeLabel" type="Label" parent="." unique_id=383441750]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1397708950]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="." unique_id=2035085652]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 999999.0
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=2075192856]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3

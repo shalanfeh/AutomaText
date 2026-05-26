@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cpa1fp1f6pwv6"]
+
+[ext_resource type="Script" uid="uid://bimc4w8qoawdo" path="res://VarDisplay.gd" id="1_3hyh3"]
+[ext_resource type="PackedScene" uid="uid://bgb6rs5351fpx" path="res://VarEditor.tscn" id="1_yq22y"]
+[ext_resource type="PackedScene" uid="uid://uw0vs4o5whqu" path="res://UI/VariableSettingsPopUp.tscn" id="3_dchh4"]
+
+[node name="VariableDnD" type="Panel" unique_id=522948549 node_paths=PackedStringArray("NameLabel", "VarEdit", "SideButton", "PopUp")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_3hyh3")
+NameLabel = NodePath("HBoxContainer/VarName")
+VarEdit = NodePath("HBoxContainer/VarEditor")
+SideButton = NodePath("HBoxContainer/SideButton")
+PopUp = NodePath("HBoxContainer/SideButton/VarPopUp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=412174104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="VarName" type="Label" parent="HBoxContainer" unique_id=1311102464]
+layout_mode = 2
+size_flags_vertical = 1
+text = "VariableName"
+
+[node name="VarEditor" parent="HBoxContainer" unique_id=1906541962 instance=ExtResource("1_yq22y")]
+layout_mode = 2
+
+[node name="SideButton" type="Button" parent="HBoxContainer" unique_id=1063472292]
+layout_mode = 2
+size_flags_horizontal = 0
+toggle_mode = true
+text = "..."
+
+[node name="VarPopUp" parent="HBoxContainer/SideButton" unique_id=779591899 instance=ExtResource("3_dchh4")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = 80.0

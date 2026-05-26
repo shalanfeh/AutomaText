@@ -33,7 +33,7 @@ func _ready() -> void:
 		
 	
 	#Hide variable type selector if necessary
-	if Target == TARGET.VARIABLE:
+	if Target == TARGET.VARIABLE and State != STATES.RENAME:
 		for type in BotGlobal.VARTYPES:
 			VarOptionButton.add_item(type)
 		VarOptionButton.selected = 0

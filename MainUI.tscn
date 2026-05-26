@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1mx4n0isq5ah"]
 
 [ext_resource type="PackedScene" uid="uid://cvjeh4nks7rrm" path="res://UpperBar.tscn" id="1_j4ict"]
-[ext_resource type="PackedScene" uid="uid://c0pvndcofna3x" path="res://UI/tree.tscn" id="1_vfs0v"]
+[ext_resource type="PackedScene" uid="uid://0iqyd0bgaem6" path="res://LeftSidebar.tscn" id="2_j4ict"]
 [ext_resource type="PackedScene" uid="uid://dvgu4li0xradx" path="res://UI/world_view_port.tscn" id="3_j4ict"]
 [ext_resource type="PackedScene" uid="uid://b0hw3jekod6fr" path="res://EmptySelectionScreen.tscn" id="5_hl57p"]
 
@@ -40,10 +40,7 @@ split_offsets = PackedInt32Array(200)
 split_offset = 200
 metadata/_edit_lock_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="VSplitContainer/LowerHalf" unique_id=1584404881]
-layout_mode = 2
-
-[node name="Tree" parent="VSplitContainer/LowerHalf/PanelContainer" unique_id=562116176 instance=ExtResource("1_vfs0v")]
+[node name="PanelContainer" parent="VSplitContainer/LowerHalf" unique_id=1246561628 instance=ExtResource("2_j4ict")]
 layout_mode = 2
 
 [node name="PanelContainer3" type="PanelContainer" parent="VSplitContainer/LowerHalf" unique_id=976287537]
