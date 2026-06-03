@@ -29,6 +29,10 @@ func _ready() -> void:
 		#Whats the new entry for
 		var Generic: GenericCodeNode = GenericNodeList.GenericList.get(key)
 		
+		#handle blacklist
+		if Generic.Name in BlackList:
+			continue
+		
 		#Find out where the new entry is going to go
 		var EndParent: TreeItem
 		match Generic.Category:

@@ -2,7 +2,7 @@ extends Node
 
 #CodeNode.tscn
 var BaseNode : PackedScene = preload("uid://dfosuh8726bvi")
-
+const ParamHandlerScene: PackedScene = preload("uid://dboyros5s3h3i")
 
 func NewNode(SaveData: SavedCodeNode) -> NodeUI:
 	var Instance: NodeUI = BaseNode.instantiate()
@@ -44,3 +44,48 @@ func InsertImage(VictimNode: NodeUI, FilePath: String) -> TextureRect:
 	
 	return NewImageRect
 	
+
+func InsertParameter(VictimNode: NodeUI, ParamName: String,
+DefaultParam: Variant, SetMode: ParameterHandler.Modes, VarAllowed: bool) -> ParameterHandler:
+	#couldn't find VBox
+	if VictimNode.NodeItemContainer == null:
+		push_warning(VictimNode, ".NodeItemContainer == null!")
+		return null
+	
+	var SNC = VictimNode.SaveData
+	if SNC.Parameters.get(ParamName) == null:
+		SNC.Parameters[ParamName] = DefaultParam
+	
+	var NewParam: ParameterHandler = ParamHandlerScene.instantiate()
+	if VictimNode.SaveData.IsVariable(ParamName):
+		NewParam.Initialize(SetMode, SNC.Parameters.get(ParamName), VarAllowed, 
+		VictimNode.SaveData.VarParameters.get(ParamName))
+	else:
+		NewParam.Initialize(SetMode, SNC.Parameters.get(ParamName), VarAllowed)
+	
+	NewParam.ValueUpdated.connect(
+		func(NewValue: Variant, IsVar: bool): 
+		_ParamEdited(VictimNode, ParamName, NewValue, IsVar)
+		)
+	
+	VictimNode.NodeItemContainer.add_child(NewParam)
+	
+	return NewParam
+
+
+#== private ==
+
+func _ParamEdited(VictimNode: NodeUI, ParamName: String, NewValue: Variant, isVar: bool) -> void:
+	var SNC: SavedCodeNode = VictimNode.SaveData
+	#parameter is no longer variable
+	if NewValue == null:
+		SNC.VarParameters.erase(ParamName)
+		return
+	
+	#parameter is a new variable
+	if isVar:
+		SNC.VarParameters[ParamName] = NewValue
+		return
+	
+	#parameter is a local value
+	SNC.Parameters[ParamName] = NewValue

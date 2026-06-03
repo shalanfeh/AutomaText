@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bf14qlesj1c63"]
+
+[ext_resource type="Script" uid="uid://b8831f6xm6whs" path="res://StandardViewport.gd" id="1_ld2gv"]
+[ext_resource type="Theme" uid="uid://dpxaa4wckxhru" path="res://UI/UI_Theme.tres" id="2_rkhw5"]
+[ext_resource type="Texture2D" uid="uid://cp4rbrrrdqtjp" path="res://Assets/Images/Backgrounds/DarkBiggerChecker2.png" id="3_27o0s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkhw5"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ld2gv"]
+texture = ExtResource("3_27o0s")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
+
+[node name="BotViewPort" type="Control" unique_id=1596718461 node_paths=PackedStringArray("TextEntry", "MessageHolder", "ScrollHolder")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ld2gv")
+TextEntry = NodePath("TextEntry")
+MessageHolder = NodePath("ScrollContainer/MessageHolder")
+ScrollHolder = NodePath("ScrollContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=360062966]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.92300004
+offset_right = 3.0
+offset_bottom = -0.104003906
+horizontal_scroll_mode = 0
+
+[node name="MessageHolder" type="VBoxContainer" parent="ScrollContainer" unique_id=1507502429]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextEntry" type="LineEdit" parent="." unique_id=1883846350]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.92300004
+anchor_right = 1.0
+anchor_bottom = 1.0020001
+offset_top = -0.104003906
+offset_bottom = -1.2960815
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("2_rkhw5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rkhw5")
+placeholder_text = "Enter text here"
+
+[node name="Panel" type="Panel" parent="." unique_id=723756288]
+z_index = -100
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.003
+anchor_bottom = 1.0
+offset_right = -0.4560547
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ld2gv")

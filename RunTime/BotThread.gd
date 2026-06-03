@@ -75,7 +75,7 @@ func Run() -> void:
 		Pop()
 		if Stack.size() == 0:
 			Clear()
-			return
+		return
 	
 	#valid savednodecode atp
 	#get the genericcode and run()

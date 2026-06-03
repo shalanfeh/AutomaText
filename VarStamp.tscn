@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c2gbw1ppcvlvg"]
+
+[ext_resource type="Script" uid="uid://c64ovn1u88au1" path="res://VarStamp.gd" id="1_0ctrb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ctrb"]
+bg_color = Color(0.14117648, 0.4862745, 0.68235296, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7www"]
+bg_color = Color(0.8, 0.19607843, 0.19607843, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mapt"]
+bg_color = Color(0.6745098, 0.36078432, 0.12156863, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxceo"]
+bg_color = Color(0.7581918, 0.7581918, 0.7581917, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayebq"]
+bg_color = Color(0.53900033, 0.53900033, 0.53900033, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 300
+corner_radius_top_right = 300
+corner_radius_bottom_right = 300
+corner_radius_bottom_left = 300
+corner_detail = 16
+
+[node name="VarStamp" type="CenterContainer" unique_id=268585240 node_paths=PackedStringArray("NameLabel")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0ctrb")
+NameLabel = NodePath("VarNameLabel")
+BgBlue = SubResource("StyleBoxFlat_0ctrb")
+BGRed = SubResource("StyleBoxFlat_w7www")
+BGOrange = SubResource("StyleBoxFlat_6mapt")
+BGGrey = SubResource("StyleBoxFlat_kxceo")
+
+[node name="VarNameLabel" type="Label" parent="." unique_id=526316990]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ayebq")
+text = "variable"
+horizontal_alignment = 1
+vertical_alignment = 1

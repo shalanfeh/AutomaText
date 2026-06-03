@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqcuxb1gbehom"
-path="res://.godot/imported/PlayArrowClick.svg-9a7ee4f0412ebbdb788f9dfdebff6040.ctex"
+uid="uid://xn77jnhfqe8v"
+path="res://.godot/imported/AddSequence.svg-3beb51ee6417c03d45883e10c67de482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/PlayArrowClick.svg"
-dest_files=["res://.godot/imported/PlayArrowClick.svg-9a7ee4f0412ebbdb788f9dfdebff6040.ctex"]
+source_file="res://Assets/Images/MenuButton/AddSequence.svg"
+dest_files=["res://.godot/imported/AddSequence.svg-3beb51ee6417c03d45883e10c67de482.ctex"]
 
 [params]
 

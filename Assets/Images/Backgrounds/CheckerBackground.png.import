@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr4hyl1vfua1"
-path="res://.godot/imported/BiggerChecker.png-cf1affbebc9ac91ea897ca87fa8bb452.ctex"
+uid="uid://dwdd6g1hn5l6n"
+path="res://.godot/imported/CheckerBackground.png-714b2e7668b27e77379ab5bd72010965.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/BiggerChecker.png"
-dest_files=["res://.godot/imported/BiggerChecker.png-cf1affbebc9ac91ea897ca87fa8bb452.ctex"]
+source_file="res://Assets/Images/Backgrounds/CheckerBackground.png"
+dest_files=["res://.godot/imported/CheckerBackground.png-714b2e7668b27e77379ab5bd72010965.ctex"]
 
 [params]
 

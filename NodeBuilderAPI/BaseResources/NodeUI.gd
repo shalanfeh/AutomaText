@@ -62,6 +62,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	#emit the signal
 	DraggedOn.emit(self, data, LeftRight)
 
+
 func _get_drag_data(at_position: Vector2) -> NodeUI:
 	DragHandler.Dragging = true
 	

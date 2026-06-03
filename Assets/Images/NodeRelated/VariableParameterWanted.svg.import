@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwko36ov5fp27"
-path="res://.godot/imported/AddSequenceHover.svg-aabfb571cf35355dda5f4e04ded6a6b5.ctex"
+uid="uid://ccuww6d15koif"
+path="res://.godot/imported/VariableParameterWanted.svg-68884a3a96bbaef9268c932193936d93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/AddSequenceHover.svg"
-dest_files=["res://.godot/imported/AddSequenceHover.svg-aabfb571cf35355dda5f4e04ded6a6b5.ctex"]
+source_file="res://Assets/Images/NodeRelated/VariableParameterWanted.svg"
+dest_files=["res://.godot/imported/VariableParameterWanted.svg-68884a3a96bbaef9268c932193936d93.ctex"]
 
 [params]
 

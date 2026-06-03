@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b0gdg1n7c0isl" path="res://NodeManager/Sequence/SequenceUI.gd" id="1_cguwc"]
 [ext_resource type="PackedScene" uid="uid://ck2ly36utex3" path="res://NodeManager/Leaf/leaf_container.tscn" id="2_cguwc"]
 [ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="3_wicfy"]
-[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="4_go42g"]
+[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/Backgrounds/BiggerChecker2.png" id="4_go42g"]
 [ext_resource type="Script" uid="uid://ofpo8vrrhq8r" path="res://NodeManager/Lines/LinePool.gd" id="6_tq6uv"]
 
 [node name="World" type="Control" unique_id=929101201]

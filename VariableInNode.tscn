@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dboyros5s3h3i"]
+
+[ext_resource type="Script" uid="uid://uqt4qi1mio1d" path="res://ParameterHandler.gd" id="1_ahbgp"]
+[ext_resource type="PackedScene" uid="uid://c2gbw1ppcvlvg" path="res://VarStamp.tscn" id="1_okxr7"]
+[ext_resource type="Texture2D" uid="uid://ccuww6d15koif" path="res://Assets/Images/NodeRelated/VariableParameterWanted.svg" id="3_088ub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxre8"]
+bg_color = Color(0, 0, 0, 0.3)
+
+[sub_resource type="DPITexture" id="DPITexture_okxr7"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.5
+
+[sub_resource type="DPITexture" id="DPITexture_bxre8"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".5\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+base_scale = 2.5
+
+[node name="CodeNodeParameter" type="CenterContainer" unique_id=2118167661 node_paths=PackedStringArray("TexEdit", "LinEdit", "SpiBox", "CheButton", "VStamp", "EmpVar")]
+offset_top = 335.0
+offset_right = 1152.0
+offset_bottom = 335.0
+script = ExtResource("1_ahbgp")
+TexEdit = NodePath("Control/TextEdit")
+LinEdit = NodePath("Control/LineEdit")
+SpiBox = NodePath("Control/SpinBox")
+CheButton = NodePath("Control/CheckButton")
+VStamp = NodePath("Control/VariableHolder/VarStamp")
+EmpVar = NodePath("Control/VariableHolder/EmptyVariable")
+
+[node name="Control" type="VBoxContainer" parent="." unique_id=1057900019]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Control" unique_id=2118019661]
+visible = false
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+placeholder_text = "Text goes here"
+drag_and_drop_selection_enabled = false
+
+[node name="LineEdit" type="LineEdit" parent="Control" unique_id=1875079407]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+placeholder_text = "Text goes here"
+drag_and_drop_selection_enabled = false
+
+[node name="SpinBox" type="SpinBox" parent="Control" unique_id=1157447081]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Control" unique_id=639300159]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_bxre8")
+theme_override_icons/checked = SubResource("DPITexture_okxr7")
+theme_override_icons/unchecked = SubResource("DPITexture_bxre8")
+text = "Current Status: False"
+
+[node name="VariableHolder" type="CenterContainer" parent="Control" unique_id=2058756541]
+layout_mode = 2
+
+[node name="VarStamp" parent="Control/VariableHolder" unique_id=268585240 instance=ExtResource("1_okxr7")]
+visible = false
+layout_mode = 2
+
+[node name="EmptyVariable" type="TextureRect" parent="Control/VariableHolder" unique_id=975419549]
+visible = false
+self_modulate = Color(0, 0, 0, 0.60400003)
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("3_088ub")
+expand_mode = 5

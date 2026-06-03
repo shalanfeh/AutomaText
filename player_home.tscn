@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dx0yl38pom7te"]
+
+[ext_resource type="Script" uid="uid://crrac5a5bcnce" path="res://Player.gd" id="1_78otf"]
+[ext_resource type="Texture2D" uid="uid://cgvev7lasoqs6" path="res://Assets/Images/NodeRelated/PlusSignSmall.svg" id="1_wpdcu"]
+
+[node name="PlayerHome" type="Panel" unique_id=732276399]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_78otf")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=2124457394]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.136
+offset_bottom = -0.12800598
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+bbcode_enabled = true
+text = "[b]AutomaText - Player"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameHolder" type="HFlowContainer" parent="." unique_id=1979175003]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.136
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.12800598
+
+[node name="TextureRect" type="TextureRect" parent="GameHolder" unique_id=1464661493]
+layout_mode = 2
+texture = ExtResource("1_wpdcu")
+stretch_mode = 2

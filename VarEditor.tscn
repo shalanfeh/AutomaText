@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://bgb6rs5351fpx"]
 
 [ext_resource type="Script" uid="uid://b3yvwy310lcm" path="res://VarEditor.gd" id="1_cg8i2"]
+[ext_resource type="Theme" uid="uid://dpxaa4wckxhru" path="res://UI/UI_Theme.tres" id="2_4oi0u"]
+
+[sub_resource type="DPITexture" id="DPITexture_4oi0u"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_2ude4"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".5\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+base_scale = 2.0
 
 [node name="Panel" type="HBoxContainer" unique_id=1906541962 node_paths=PackedStringArray("TypeLabel", "TextEntry", "NumberEntry", "BoolEntry")]
 anchors_preset = 15
@@ -25,14 +36,20 @@ size_flags_vertical = 1
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_4oi0u")
+placeholder_text = "null"
 
 [node name="SpinBox" type="SpinBox" parent="." unique_id=2035085652]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 999999.0
+allow_greater = true
+allow_lesser = true
 
 [node name="CheckButton" type="CheckButton" parent="." unique_id=2075192856]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_icons/checked = SubResource("DPITexture_4oi0u")
+theme_override_icons/unchecked = SubResource("DPITexture_2ude4")

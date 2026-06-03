@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnnun7pvk7t3p"
-path="res://.godot/imported/PlayArrow.svg-0c2ff69c2ff68cfec564721c8791f6af.ctex"
+uid="uid://cp4rbrrrdqtjp"
+path="res://.godot/imported/DarkBiggerChecker2.png-f4d4af1128670f5aef90222efa18b225.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/PlayArrow.svg"
-dest_files=["res://.godot/imported/PlayArrow.svg-0c2ff69c2ff68cfec564721c8791f6af.ctex"]
+source_file="res://Assets/Images/Backgrounds/DarkBiggerChecker2.png"
+dest_files=["res://.godot/imported/DarkBiggerChecker2.png-f4d4af1128670f5aef90222efa18b225.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

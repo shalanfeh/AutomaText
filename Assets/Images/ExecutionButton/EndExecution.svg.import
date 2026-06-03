@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp4rbrrrdqtjp"
-path="res://.godot/imported/DarkBiggerChecker2.png-c7c1f3628751c16d189459e3b6690ed9.ctex"
+uid="uid://blo24gy77fh41"
+path="res://.godot/imported/EndExecution.svg-343aac8fc22dd2117639cdd72a9ea875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/DarkBiggerChecker2.png"
-dest_files=["res://.godot/imported/DarkBiggerChecker2.png-c7c1f3628751c16d189459e3b6690ed9.ctex"]
+source_file="res://Assets/Images/ExecutionButton/EndExecution.svg"
+dest_files=["res://.godot/imported/EndExecution.svg-343aac8fc22dd2117639cdd72a9ea875.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -6,11 +6,20 @@ class_name UpperBar
 @export var HomeButton: TextureButton
 @export var PlayButton: TextureButton
 
+#normal, hover, pressed
+var RunButtonSprites: Array[String] = ["uid://bnnun7pvk7t3p", 
+"uid://cgjx3mjwrbcts", "uid://bqcuxb1gbehom"]
+
+var StopButtonSprites: Array[String] = ["uid://blo24gy77fh41",
+"uid://burwv2gpqk147", "uid://w2fd32o10vji"]
+
 var ExistingTabs: Array[String] = []
 
 func _ready() -> void:
 	#scheduler
 	PlayButton.pressed.connect(PlayButtonClicked)
+	Prg.ProgramStarted.connect(PrgRunStatusChanged)
+	Prg.ProgramEnded.connect(PrgRunStatusChanged)
 	
 	#home button
 	HomeButton.pressed.connect(HomeClicked)
@@ -87,6 +96,16 @@ func PlayButtonClicked() -> void:
 		Prg.StartProgram()
 	else:
 		Prg.EndProgram()
+
+func PrgRunStatusChanged() -> void:
+	if Prg.Running == false:
+		PlayButton.texture_normal = load(RunButtonSprites[0])
+		PlayButton.texture_hover = load(RunButtonSprites[1])
+		PlayButton.texture_pressed = load(RunButtonSprites[2])
+		return
+	PlayButton.texture_normal = load(StopButtonSprites[0])
+	PlayButton.texture_hover = load(StopButtonSprites[1])
+	PlayButton.texture_pressed = load(StopButtonSprites[2])
 
 func OnRefresh() -> void:
 	ExistingTabs.clear()

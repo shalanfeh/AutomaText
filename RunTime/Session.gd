@@ -9,3 +9,5 @@ var Variables: Dictionary[String, BotVariable] = {}
 var ActiveThreads: Array[BotThread]
 var ThreadsToRemove: Array[BotThread]
 var ThreadsToAdd: Array[BotThread]
+
+var ViewPort: StandardViewport

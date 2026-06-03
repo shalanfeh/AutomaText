@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://covtpgan6wevk"
-path="res://.godot/imported/BiggerChecker2.png-183fe7047ec0aa5473a9416601a79f88.ctex"
+uid="uid://cgjx3mjwrbcts"
+path="res://.godot/imported/PlayArrowHover.svg-10d6b9dbd55d238c4b9020432d37ade5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/BiggerChecker2.png"
-dest_files=["res://.godot/imported/BiggerChecker2.png-183fe7047ec0aa5473a9416601a79f88.ctex"]
+source_file="res://Assets/Images/ExecutionButton/PlayArrowHover.svg"
+dest_files=["res://.godot/imported/PlayArrowHover.svg-10d6b9dbd55d238c4b9020432d37ade5.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

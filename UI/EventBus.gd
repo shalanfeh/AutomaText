@@ -8,3 +8,5 @@ signal CreateSequenceTab(SeqName: String)
 signal OpenHomeScreen
 signal TabSelected(SeqName: String)
 signal TabClosed(NewTab: String)
+signal DraggingVariable(VarName: String)
+signal NoLongerDraggingVariable()

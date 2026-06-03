@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d31qji6n8202u"
-path="res://.godot/imported/PlusSign.svg-6b6c8aba041884227ea91e77d496b8b7.ctex"
+uid="uid://cgvev7lasoqs6"
+path="res://.godot/imported/PlusSignSmall.svg-1ce0b993fa121eb31b1cd2093656b578.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/PlusSign.svg"
-dest_files=["res://.godot/imported/PlusSign.svg-6b6c8aba041884227ea91e77d496b8b7.ctex"]
+source_file="res://Assets/Images/NodeRelated/PlusSignSmall.svg"
+dest_files=["res://.godot/imported/PlusSignSmall.svg-1ce0b993fa121eb31b1cd2093656b578.ctex"]
 
 [params]
 

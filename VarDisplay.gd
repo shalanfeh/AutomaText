@@ -43,3 +43,21 @@ func ChangeName(NewName: String) -> void:
 	NameLabel.text = Target
 	PopUp.UpdateTarget(Target)
 	VarEdit.SetVar(Target)
+
+const VarStampScene: PackedScene = preload("uid://c2gbw1ppcvlvg")
+
+func _get_drag_data(_at_position: Vector2) -> String:
+	DragHandler.Dragging = true
+	
+	EventBus.DraggingVariable.emit(Target)
+	
+	var NewStamp: VarStamp = VarStampScene.instantiate()
+	NewStamp.SetVar(Target)
+	NewStamp.tree_exited.connect(func(): DragHandler.Dragging = false)
+	NewStamp.tree_exited.connect(func(): EventBus.NoLongerDraggingVariable.emit())
+	
+	set_drag_preview(NewStamp)
+	
+	#Must create a new one here because the one used for the drag UI will be deleted
+	#according to the documentation for set_drag_preview
+	return Target

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0hw3jekod6fr"]
 
-[ext_resource type="Texture2D" uid="uid://cp4rbrrrdqtjp" path="res://Assets/Images/DarkBiggerChecker2.png" id="1_w7jxc"]
+[ext_resource type="Texture2D" uid="uid://cp4rbrrrdqtjp" path="res://Assets/Images/Backgrounds/DarkBiggerChecker2.png" id="1_w7jxc"]
 [ext_resource type="PackedScene" uid="uid://byte06meyfrnn" path="res://UI/AddSequence.tscn" id="2_22i4j"]
 [ext_resource type="Script" uid="uid://o2r2v5k3cvbn" path="res://empty_selection_screen.gd" id="2_jp5xv"]
 [ext_resource type="PackedScene" uid="uid://bxekktn5nkbjv" path="res://UI/sequence_list.tscn" id="3_1xiex"]

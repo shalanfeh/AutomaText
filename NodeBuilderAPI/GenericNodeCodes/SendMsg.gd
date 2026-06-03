@@ -5,7 +5,9 @@ extends GenericCodeNode
 #Context contains thread related variables and stack
 #SaveData contains the parameters and variable changed for this node
 func Run(Context: BotThread, Pointer: ExecutionPointer, SaveData: SavedCodeNode) -> void:
-	print(str(SaveData.GetParam("ToPrint")))
+	var Sender: String = str(SaveData.GetParam("Sender"))
+	var Content: String = str(SaveData.GetParam("Content"))
+	Prg.CurrentSession.ViewPort.CreateMsg(Sender, Content)
 
 #takes in a savedNode to build the node with customized parameters
 func Create(Modifications: SavedCodeNode = null) -> NodeUI:
@@ -13,14 +15,17 @@ func Create(Modifications: SavedCodeNode = null) -> NodeUI:
 	CreatedNode.SaveData.Name = Name
 	
 	var Title: Label = NodeBuilderAPI.InsertTitle(CreatedNode)
-	Title.text = "Print"
+	Title.text = "Send Message"
 	
-	var InputParam: ParameterHandler = NodeBuilderAPI.InsertParameter(
-		CreatedNode, "ToPrint", "Hello World", ParameterHandler.Modes.PARAGRAPH, true)
+	NodeBuilderAPI.InsertParameter(
+		CreatedNode, "Sender", "Sender", ParameterHandler.Modes.LINE, true)
+	
+	NodeBuilderAPI.InsertParameter(
+		CreatedNode, "Content", "", ParameterHandler.Modes.PARAGRAPH, true)
 	
 	return CreatedNode
 
 func _init() -> void:
-	Name = "PrintCode"
+	Name = "SendMsg"
 	Category = Categories.CODE
 	super()

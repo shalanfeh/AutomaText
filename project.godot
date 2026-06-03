@@ -25,6 +25,10 @@ EventBus="*uid://cnga3pvx5fff0"
 RunTime="*uid://uk558owt7wn7"
 Prg="*uid://bkoxlynr1pkoq"
 
+[display]
+
+window/subwindows/embed_subwindows=false
+
 [dotnet]
 
 project/assembly_name="AutomaText"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvgu4li0xradx"]
 
-[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/BiggerChecker2.png" id="1_tienf"]
+[ext_resource type="Texture2D" uid="uid://covtpgan6wevk" path="res://Assets/Images/Backgrounds/BiggerChecker2.png" id="1_tienf"]
 [ext_resource type="Script" uid="uid://c68kpr3ptllda" path="res://UI/world_view_port.gd" id="1_uiojn"]
 [ext_resource type="Script" uid="uid://byqbhm2erodr3" path="res://Camera/PanningCamera2D.gd" id="2_uryu6"]
 [ext_resource type="Script" uid="uid://b0gdg1n7c0isl" path="res://NodeManager/Sequence/SequenceUI.gd" id="3_uryu6"]

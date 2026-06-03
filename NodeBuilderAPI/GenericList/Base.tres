@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_thxld")
 Name = "Base"
-UIDList = Array[String](["uid://drpwlhjoi30ex", "uid://dqx2qwb5xqjjb", "uid://dlp3xpqkosm4f", "uid://ibvf2c4migw0", "uid://c82lb82alhjib", "uid://bvsja16gci2g2"])
+UIDList = Array[String](["uid://drpwlhjoi30ex", "uid://dqx2qwb5xqjjb", "uid://dlp3xpqkosm4f", "uid://ibvf2c4migw0", "uid://c82lb82alhjib", "uid://bvsja16gci2g2", "uid://b7wok3c1ftsa8", "uid://74nb1so2lre1"])

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://e5164m1to1xg"]
+
+[ext_resource type="Script" uid="uid://bynw3ky2pmas7" path="res://ProgramWindow.gd" id="1_808dq"]
+
+[node name="Control" type="Window" unique_id=1294372589]
+physics_object_picking = true
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(1100, 700)
+nonclient_area = Rect2i(0, 0, 1000, 1000)
+script = ExtResource("1_808dq")
