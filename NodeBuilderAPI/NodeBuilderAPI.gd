@@ -3,6 +3,8 @@ extends Node
 #CodeNode.tscn
 var BaseNode : PackedScene = preload("uid://dfosuh8726bvi")
 const ParamHandlerScene: PackedScene = preload("uid://dboyros5s3h3i")
+const ConditionalHandlerScene: PackedScene = preload("uid://cvgmtlnie18c0")
+const MathHandlerScene: PackedScene = preload("uid://m3v67rk2w0g3")
 
 func NewNode(SaveData: SavedCodeNode) -> NodeUI:
 	var Instance: NodeUI = BaseNode.instantiate()
@@ -72,6 +74,37 @@ DefaultParam: Variant, SetMode: ParameterHandler.Modes, VarAllowed: bool) -> Par
 	
 	return NewParam
 
+func InsertConditionalOperator(VictimNode: NodeUI, ParamName: String) -> ConditionalOperatorSelector:
+	if VictimNode.NodeItemContainer == null:
+		push_warning(VictimNode, ".NodeItemContainer == null!")
+		return null
+	
+	var SNC = VictimNode.SaveData
+	if SNC.Parameters.get(ParamName) == null:
+		SNC.Parameters[ParamName] = 0
+	
+	var NewConditional: ConditionalOperatorSelector = ConditionalHandlerScene.instantiate()
+	NewConditional.OperatorChanged.connect(func(idx): SNC.Parameters[ParamName] = idx)
+	
+	VictimNode.NodeItemContainer.add_child(NewConditional)
+	
+	return NewConditional
+
+func InsertMathOperator(VictimNode: NodeUI, ParamName: String) -> MathOperationSelector:
+	if VictimNode.NodeItemContainer == null:
+		push_warning(VictimNode, ".NodeItemContainer == null!")
+		return null
+	
+	var SNC = VictimNode.SaveData
+	if SNC.Parameters.get(ParamName) == null:
+		SNC.Parameters[ParamName] = 0
+	
+	var NewOperation: MathOperationSelector = MathHandlerScene.instantiate()
+	NewOperation.OperatorChanged.connect(func(idx): SNC.Parameters[ParamName] = idx)
+	
+	VictimNode.NodeItemContainer.add_child(NewOperation)
+	
+	return NewOperation
 
 #== private ==
 

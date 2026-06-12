@@ -66,7 +66,7 @@ func InitializeValue(Value: Variant) -> void:
 	elif Mode == Modes.INT or Mode == Modes.FLOAT:
 		SpiBox.value = float(Value)
 	elif Mode == Modes.BOOL:
-		CheButton.button_pressed = bool(Value)
+		CheButton.button_pressed = not not Value
 
 #connects and disconnects signals, hides and shows VStamp
 func VarHandler() -> void:

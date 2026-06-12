@@ -16,3 +16,11 @@ var RanTrigger: bool = false
 
 func _init(Target: String) -> void:
 	Sequence = Target
+
+
+func Clone() -> ExecutionPointer:
+	var c := ExecutionPointer.new(Sequence)
+	c.leaf = leaf
+	c.index = index
+	c.RanTrigger = RanTrigger
+	return c
